@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Fire Prevention</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">설정</string>
+
+
+    <string name="title">화재 감지 알림 서비스</string>
+    <string name="login">로그인</string>
+    <string name="autologin">자동 로그인</string>
+    <string name="signup">회원 가입</string>
+    <string name="cancel">취소</string>
+    <string name="signuptext">등록하실 이메일과 비밀번호를 입력해주세요.</string>
+    <string name="signuptitle">정말 간단합니다!</string>
+</resources>

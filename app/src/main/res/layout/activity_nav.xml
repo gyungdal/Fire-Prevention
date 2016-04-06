@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    android:background="#fff">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="top|center_horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight = ".50"
+                android:layout_height="wrap_content"
+                android:background="@drawable/nav_button"
+                android:textColor="#000"
+                android:id="@+id/caution"
+                android:text="알림" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight = ".50"
+                android:layout_height="wrap_content"
+                android:background="@drawable/nav_button"
+                android:textColor="#000"
+                android:text="상태"
+                android:id="@+id/status" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/nav_button"
+                android:textColor="#000"
+                android:text="홈"
+                android:id="@+id/gotoHome"
+                android:layout_gravity="center_horizontal" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/nav_button"
+                android:textColor="#000"
+                android:text="등록 및 조회"
+                android:id="@+id/insertOrSelect"
+                android:layout_gravity="center_horizontal"
+                android:layout_below="@id/gotoHome"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/nav_button"
+                android:textColor="#000"
+                android:text="화재경보기 관리"
+                android:id="@+id/machineSetting"
+                android:layout_gravity="center_horizontal"
+                android:layout_below="@id/insertOrSelect"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/nav_button"
+                android:textColor="#000"
+                android:text="화재 시 대피 요령"
+                android:id="@+id/runWhenFire"
+                android:layout_gravity="center_horizontal"
+                android:layout_below="@id/machineSetting"/>
+
+            <ImageView
+                android:layout_below="@id/runWhenFire"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:src="@drawable/fire"/>
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/SOS"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:background="@drawable/red_button"
+            android:text="긴급 SOS"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            />
+    </LinearLayout>
+</ScrollView>

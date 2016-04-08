@@ -13,4 +13,9 @@
     <string name="cancel">취소</string>
     <string name="signuptext">등록하실 이메일과 비밀번호를 입력해주세요.</string>
     <string name="signuptitle">정말 간단합니다!</string>
+    <string name="nav_fire">불꽃</string>
+    <string name="nav_smoke">연기</string>
+    <string name="nav_temp">온도</string>
+    <string name="caution">알림</string>
+    <string name="status">상태</string>
 </resources>

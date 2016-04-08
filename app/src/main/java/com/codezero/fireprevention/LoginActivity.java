@@ -5,18 +5,23 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by GyungDal on 2016-04-04.
  */
 public class LoginActivity extends AppCompatActivity {
+    private static final String TAG = "Login";
+
     private Button login;
     private EditText email;
     private EditText pass;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +46,12 @@ public class LoginActivity extends AppCompatActivity {
                             pass.getText().toString().equals("test"))
                         startActivity(new Intent(getApplicationContext(),MainActivity.class));
                     else
+                    try {
                         Snackbar.make(getCurrentFocus(), "로그인 실패", Snackbar.LENGTH_SHORT).show();
+                    }catch(NullPointerException e){
+                        Log.e(TAG, e.getMessage());
+                        Toast.makeText(getApplicationContext(), "로그인 실패", Toast.LENGTH_SHORT).show();
+                    }
                     break;
                 default :
                     break;

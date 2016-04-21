@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="F:\School\company\DSM\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\3.1.36\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="7421dcb3ed9db47a59ec618e2398f0df65c2d480">
+        <dex dex="F:\School\company\DSM\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\classes-8464091f18f5967f29e0a0b3c30f8a9b824465a3.jar" />
+    </item>
+
+</items>

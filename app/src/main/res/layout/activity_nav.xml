@@ -2,7 +2,6 @@
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/nav"
-    android:layout_marginTop="25dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
@@ -12,174 +11,127 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="top|center_horizontal">
+        android:gravity="top|center_horizontal"
+        android:id="@+id/topPanel">
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:padding="8dp"
+            android:orientation="vertical"
+            >
 
-            <RelativeLayout
-                android:background="@drawable/side"
-                android:layout_width="0dp"
-                android:layout_weight=".50"
-                android:id="@+id/caution"
-                android:layout_height="40dp"
-                >
-                <ImageView
-                    android:layout_marginTop="4dp"
-                    android:layout_marginLeft="10dp"
-                    android:id="@+id/caution_image"
-                    android:layout_width="@dimen/nav_image_size"
-                    android:layout_height="@dimen/nav_image_size"
-                    android:src="@android:drawable/ic_dialog_email"/>
-                <TextView
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@id/caution_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#000"
-                    android:text="@string/status"
-                    android:textSize="@dimen/nav_text_size"/>
-            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
 
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_weight=".50"
-                android:id="@+id/status"
-                android:layout_height="match_parent"
-                >
-                <ImageView
-                    android:layout_marginTop="4dp"
-                    android:layout_marginLeft="10dp"
-                    android:id="@+id/status_image"
-                    android:layout_width="@dimen/nav_image_size"
-                    android:layout_height="@dimen/nav_image_size"
-                    android:src="@android:drawable/ic_dialog_email"/>
-                <TextView
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@id/status_image"
+                <Button
+                    android:id="@+id/alarm"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#000"
+                    android:layout_height="48dp"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/test"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     android:text="알림"
-                    android:textSize="@dimen/nav_text_size"/>
-            </RelativeLayout>
+                    android:onClick="click" />
+
+                <View
+                    android:layout_width="1dip"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_height="fill_parent"
+                    android:background="@android:color/darker_gray" />
+
+                <Button
+                    android:id="@+id/status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/test"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="상태"
+                    android:onClick="click" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <Button
+                android:id="@+id/home"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/test"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:text="홈"
+                android:textStyle="bold"
+                android:onClick="click" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <Button
+                android:id="@+id/insertAndSearch"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/test"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:text="화재경보기 등록 및 조회"
+                android:textStyle="bold"
+                android:onClick="click" />
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+            <Button
+                android:id="@+id/management"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/test"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:text="화재경보기 관리"
+                android:textStyle="bold"
+                android:onClick="click" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+            <Button
+                android:id="@+id/runWhenFire"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/test"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:text="화재 시 대피 요령"
+                android:textStyle="bold"
+                android:onClick="click" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
 
         </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <RelativeLayout
-                android:background="@drawable/top"
-                android:layout_width="match_parent"
-                android:id="@+id/gotoHome"
-                android:layout_height="40dp">
-                <ImageView
-                    android:layout_marginTop="4dp"
-                    android:layout_marginLeft="10dp"
-                    android:id="@+id/gotoHome_image"
-                    android:layout_width="@dimen/nav_image_size"
-                    android:layout_height="@dimen/nav_image_size"
-                    android:src="@android:drawable/ic_dialog_email"/>
-                <TextView
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@id/gotoHome_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#000"
-                    android:text="알림"
-                    android:textSize="@dimen/nav_text_size"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:background="@drawable/top"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="match_parent"
-                android:id="@+id/insertOrSelect"
-                android:layout_height="40dp"
-                android:layout_below="@id/gotoHome">
-                <ImageView
-                    android:layout_marginTop="4dp"
-                    android:layout_marginLeft="10dp"
-                    android:id="@+id/insertOrSelect_image"
-                    android:layout_width="@dimen/nav_image_size"
-                    android:layout_height="@dimen/nav_image_size"
-                    android:src="@android:drawable/ic_dialog_email"/>
-                <TextView
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@id/insertOrSelect_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#000"
-                    android:text="화재경보기 등록 및 조회"
-                    android:textSize="@dimen/nav_text_size"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:background="@drawable/top"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="match_parent"
-                android:id="@+id/machineSetting"
-                android:layout_height="40dp"
-                android:layout_below="@id/insertOrSelect">
-                <ImageView
-                    android:layout_marginTop="4dp"
-                    android:layout_marginLeft="10dp"
-                    android:id="@+id/machineSetting_image"
-                    android:layout_width="@dimen/nav_image_size"
-                    android:layout_height="@dimen/nav_image_size"
-                    android:src="@android:drawable/ic_dialog_email"/>
-                <TextView
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@id/machineSetting_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#000"
-                    android:text="화재경보기 관리"
-                    android:textSize="@dimen/nav_text_size"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:background="@drawable/bottom_top"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="match_parent"
-                android:id="@+id/runWhenFire"
-                android:layout_height="40dp"
-                android:layout_below="@id/machineSetting">
-                <ImageView
-                    android:layout_marginTop="4dp"
-                    android:layout_marginLeft="10dp"
-                    android:id="@+id/runWhenFire_image"
-                    android:layout_width="@dimen/nav_image_size"
-                    android:layout_height="@dimen/nav_image_size"
-                    android:src="@android:drawable/ic_dialog_email"/>
-                <TextView
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@id/runWhenFire_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#000"
-                    android:text="화재 시 대피 요령"
-                    android:textSize="@dimen/nav_text_size"/>
-            </RelativeLayout>
-
             <ImageView
                 android:layout_marginTop="20dp"
-                android:layout_below="@id/runWhenFire"
+                android:layout_below="@id/topPanel"
                 android:layout_centerHorizontal="true"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:src="@drawable/fire"/>
-        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

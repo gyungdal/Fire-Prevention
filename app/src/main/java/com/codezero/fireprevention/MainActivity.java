@@ -1,25 +1,21 @@
 package com.codezero.fireprevention;
 
 import android.content.Intent;
-import android.graphics.Rect;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.Window;
-import android.widget.LinearLayout;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +66,33 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    public void click(View v){
+        switch(v.getId()) {
+            case R.id.alarm:
+                Log.i(TAG, "alarm");
+                break;
+            case R.id.status:
+                Log.i(TAG, "status");
+                startActivity(new Intent(this, UnSafeActivity.class));
+                MainActivity.this.finish();
+                break;
+            case R.id.home:
+                Log.i(TAG, "HOME");
+                break;
+            case R.id.insertAndSearch:
+                Log.i(TAG, "등록 및 조회");
+                break;
+            case R.id.management:
+                Log.i(TAG, "관리");
+                break;
+            case R.id.runWhenFire:
+                Log.i(TAG, "대피요령");
+                break;
+            case R.id.SOS:
+                Log.i(TAG, "긴급 SOS");
+                break;
+        }
+    }
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {

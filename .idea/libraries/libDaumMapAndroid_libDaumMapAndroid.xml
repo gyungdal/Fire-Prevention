@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="libDaumMapAndroid.libDaumMapAndroid">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libDaumMapAndroid/libDaumMapAndroid.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -42,15 +42,17 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
                     break;
                 case R.id.login :
-                    if(email.getText().toString().equals("9274aa@gmail.com") &&
-                            pass.getText().toString().equals("test"))
+                    if(email.getText().toString().equals("") &&
+                            pass.getText().toString().equals("")){
                         startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                    else
-                    try {
-                        Snackbar.make(getCurrentFocus(), "로그인 실패", Snackbar.LENGTH_SHORT).show();
-                    }catch(NullPointerException e){
-                        Log.e(TAG, e.getMessage());
-                        Toast.makeText(getApplicationContext(), "로그인 실패", Toast.LENGTH_SHORT).show();
+                        LoginActivity.this.finish();
+                    } else {
+                        try {
+                            Snackbar.make(getCurrentFocus(), "로그인 실패", Snackbar.LENGTH_SHORT).show();
+                        } catch (NullPointerException e) {
+                            Log.e(TAG, e.getMessage());
+                            Toast.makeText(getApplicationContext(), "로그인 실패", Toast.LENGTH_SHORT).show();
+                        }
                     }
                     break;
                 default :

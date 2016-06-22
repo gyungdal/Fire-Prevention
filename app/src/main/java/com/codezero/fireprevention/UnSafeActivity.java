@@ -45,7 +45,7 @@ public class UnSafeActivity extends AppCompatActivity implements
         mapViewContainer.addView(mapView);
         mapView.setMapViewEventListener(this); //this에 MapView.MapViewEventListener 구현
         mapView.setPOIItemEventListener(this);
-        mapView.setMapCenterPointAndZoomLevel(SCHOOL, 1, true);
+        mapView.setMapCenterPointAndZoomLevel(SCHOOL, 0, true);
 
         MapPOIItem mSchool = new MapPOIItem();
         mSchool.setItemName("부리야!!!!");

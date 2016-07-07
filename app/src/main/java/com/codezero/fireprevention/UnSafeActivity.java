@@ -22,7 +22,8 @@ import net.daum.mf.map.api.MapView;
  * TODO : 다른 기기들에서 주소를 받아서 마커 생성
  */
 public class UnSafeActivity extends AppCompatActivity implements
-        MapView.MapViewEventListener, MapView.POIItemEventListener, MapView.OpenAPIKeyAuthenticationResultListener {
+                            MapView.MapViewEventListener, MapView.POIItemEventListener,
+                            MapView.OpenAPIKeyAuthenticationResultListener {
 
     private static final String TAG = "UnSafe Acitivty";
     private MapPoint Center = MapPoint.mapPointWithGeoCoord(36.391883, 127.363350);

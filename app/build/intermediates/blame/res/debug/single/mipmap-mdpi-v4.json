@@ -2,5 +2,9 @@
     {
         "merged": "D:\\Company\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi-v4\\ic_launcher.png",
         "source": "D:\\Company\\Fire alarm\\fire-prevention\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi-v4\\ic_launcher.png",
+        "source": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     }
 ]

@@ -54,6 +54,18 @@
             </intent-filter>
         </activity>
 
+        <!-- Add Activity -->
+        <activity
+            android:name="com.codezero.fireprevention.AddActivity"
+            android:label="화재 경보기 등록"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <!-- Unsafe Activity -->
         <activity
             android:name="com.codezero.fireprevention.UnSafeActivity"

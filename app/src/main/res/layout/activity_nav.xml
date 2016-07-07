@@ -79,13 +79,13 @@
                 android:background="@android:color/darker_gray" />
 
             <Button
-                android:id="@+id/insertAndSearch"
+                android:id="@+id/insert"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:background="@drawable/test"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
-                android:text="화재경보기 등록 및 조회"
+                android:text="화재경보기 등록"
                 android:textStyle="bold"
                 android:onClick="click" />
             <View

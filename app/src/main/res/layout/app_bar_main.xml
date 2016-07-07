@@ -14,5 +14,32 @@
             android:background="?attr/colorPrimary" app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/statusImage"
+            android:layout_width="230dp"
+            android:layout_height="230dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/safe"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="15dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:textColor="#000"
+            android:gravity="center"
+            android:text="@string/safe"
+            android:id="@+id/statusText"
+            android:layout_below="@+id/statusImage"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

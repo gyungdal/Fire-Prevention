@@ -150,9 +150,6 @@ public class FullScannerActivity extends BaseScannerActivity implements MessageD
 
     @Override
     public void handleResult(Result rawResult) {
-        MainActivity.check = true;
-        MainActivity.get = true;
-
         try {
             Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
@@ -161,7 +158,6 @@ public class FullScannerActivity extends BaseScannerActivity implements MessageD
         try {
             if(rawResult.getContents().contains("gyungdal")){
                 showMessageDialog("성공!");
-                MainActivity.get = false;
                 finish();
                 //showMessageDialog("Contents = " + rawResult.getContents() + ", Format = " + rawResult.getBarcodeFormat().getName());
             }else{

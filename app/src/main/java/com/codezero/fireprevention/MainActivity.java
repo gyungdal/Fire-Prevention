@@ -1,13 +1,9 @@
 package com.codezero.fireprevention;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -17,38 +13,54 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.codezero.fireprevention.activity.EnrollmentActivity;
-import com.codezero.fireprevention.activity.FullScannerActivity;
-
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener{
     private static final String TAG = "MainActivity";
-
-    public static boolean check;
-    public static boolean get;
-    private static final int ZBAR_CAMERA_PERMISSION = 1;
-    private Class<?> mClss;
-
+    private static final boolean DANGER = true;
+    private static final boolean SAFE = false;
+    public static boolean check; // true : danger
+    private ImageView imageView;
+    private TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        check = get = true;
+        imageView = (ImageView)findViewById(R.id.statusImage);
+        textView = (TextView)findViewById(R.id.statusText);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
+        check = !check;
+        setStatus();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    public void setStatus(){
+        if(check){
+            imageView.setImageResource(R.drawable.unsafe);
+            textView.setText(getText(R.string.unsafe));
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(MainActivity.this, UnSafeActivity.class));
+                    Toast.makeText(getApplicationContext(), "클릭", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }else{
+            imageView.setImageResource(R.drawable.safe);
+            textView.setText(getText(R.string.safe));
+            imageView.setOnClickListener(null);
+        }
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -88,15 +100,14 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.status:
                 Log.i(TAG, "status");
-                startActivity(new Intent(this, UnSafeActivity.class));
                 break;
             case R.id.home:
                 Toast.makeText(getApplicationContext(), "이미 홈입니다.", Toast.LENGTH_SHORT).show();
                 Log.i(TAG, "HOME");
                 break;
-            case R.id.insertAndSearch:
-                startActivity(new Intent(this,FullScannerActivity.class));
-                Log.i(TAG, "등록 및 조회");
+            case R.id.insert:
+                startActivity(new Intent(this, AddActivity.class));
+                Log.i(TAG, "등록");
                 break;
             case R.id.management:
                 Log.i(TAG, "관리");
@@ -136,41 +147,4 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    public void setupToolbar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-    }
-
-    public void launchFullActivity(View v) {
-        launchActivity(FullScannerActivity.class);
-    }
-
-
-    public void launchActivity(Class<?> clss) {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
-                != PackageManager.PERMISSION_GRANTED) {
-            mClss = clss;
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.CAMERA}, ZBAR_CAMERA_PERMISSION);
-        } else {
-            Intent intent = new Intent(this, clss);
-            startActivity(intent);
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode,  String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case ZBAR_CAMERA_PERMISSION:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    if(mClss != null) {
-                        Intent intent = new Intent(this, mClss);
-                        startActivity(intent);
-                    }
-                } else {
-                    Toast.makeText(this, "Please grant camera permission to use the QR Scanner", Toast.LENGTH_SHORT).show();
-                }
-                return;
-        }
-    }
 }

@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 
+import com.codezero.fireprevention.AddMapActivity;
 import com.codezero.fireprevention.MainActivity;
 import com.codezero.fireprevention.R;
 import com.codezero.fireprevention.fragment.CameraSelectorDialogFragment;
@@ -156,13 +157,18 @@ public class FullScannerActivity extends BaseScannerActivity implements MessageD
             r.play();
         } catch (Exception e) {}
         try {
-            if(rawResult.getContents().contains("gyungdal")){
-                showMessageDialog("성공!");
+
+            if(Integer.valueOf(rawResult.getContents()) >= 0) {
+                showMessageDialog("제품번호는 " + rawResult.getContents() + " 입니다.");
+                Intent intent = new Intent(FullScannerActivity.this, AddMapActivity.class);
+                intent.putExtra("productKey", Integer.valueOf(rawResult.getContents()));
+                startActivity(intent);
                 finish();
                 //showMessageDialog("Contents = " + rawResult.getContents() + ", Format = " + rawResult.getBarcodeFormat().getName());
             }else{
-                MainActivity.check = false;
-                finish();
+                showMessageDialog("잘못된 값입니다");
+                Log.i("Value", rawResult.getContents());
+                //Log.i("Value Long", String.valueOf(Long.valueOf(rawResult.getContents())));
             }
         }catch(NullPointerException e){
             Log.e("Wrong QRCODE", e.getMessage());

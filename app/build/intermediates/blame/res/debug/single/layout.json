@@ -28,6 +28,10 @@
         "source": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\layout\\notification_template_lines.xml"
     },
     {
+        "merged": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_add_map.xml",
+        "source": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\src\\main\\res\\layout\\activity_add_map.xml"
+    },
+    {
         "merged": "D:\\Company\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
         "source": "D:\\Company\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\layout\\abc_action_menu_item_layout.xml"
     },

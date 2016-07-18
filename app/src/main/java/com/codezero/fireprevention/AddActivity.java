@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -27,8 +26,9 @@ public class AddActivity extends AppCompatActivity {
     private static final int ZBAR_CAMERA_PERMISSION = 1;
     private Class<?> mClss;
     private Toolbar toolbar;
-    private EditText editText;
-    private Button button;
+    private EditText esearch;
+    private Button bscan;
+    private Button bsearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,15 +36,23 @@ public class AddActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add);
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         setToolbar();
-        button = (Button)findViewById(R.id.QRCodeScan);
-        editText = (EditText)findViewById(R.id.SearchText);
-        button.setOnClickListener(new View.OnClickListener() {
+        bscan = (Button)findViewById(R.id.QRCodeScan);
+        esearch = (EditText)findViewById(R.id.SearchText);
+        bsearch = (Button)findViewById(R.id.search);
+        bscan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(AddActivity.this,FullScannerActivity.class));
             }
         });
-        editText.setOnKeyListener(new EditMessageOnKeyListener(getApplicationContext()));
+        bsearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String str = esearch.getText().toString();
+
+            }
+        });
+
     }
 
     private void setToolbar(){

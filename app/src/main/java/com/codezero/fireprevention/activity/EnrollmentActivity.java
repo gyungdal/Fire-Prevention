@@ -19,7 +19,7 @@ import com.codezero.fireprevention.R;
  * Created by GyungDal on 2016-03-31.
  */
 public class EnrollmentActivity extends AppCompatActivity{
-
+    private String getData = "https://apis.daum.net/local/geo/addr2coord?apikey=952d7bd3b757ddb384711627fbd29538&q=";
     private static final int ZBAR_CAMERA_PERMISSION = 1;
     private Class<?> mClss;
 
@@ -28,6 +28,7 @@ public class EnrollmentActivity extends AppCompatActivity{
         super.onCreate(state);
         setContentView(R.layout.enrollment_activity);
         setupToolbar();
+
     }
 
     public void setupToolbar() {

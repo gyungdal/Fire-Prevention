@@ -24,16 +24,16 @@
         "source": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\anim\\abc_fade_in.xml"
     },
     {
-        "merged": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_out.xml",
-        "source": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\anim\\abc_fade_out.xml"
+        "merged": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_fab_in.xml",
+        "source": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.2.1\\res\\anim\\design_fab_in.xml"
     },
     {
         "merged": "D:\\Company\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_enter.xml",
         "source": "D:\\Company\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\anim\\abc_popup_enter.xml"
     },
     {
-        "merged": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_fab_in.xml",
-        "source": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.2.1\\res\\anim\\design_fab_in.xml"
+        "merged": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_out.xml",
+        "source": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\anim\\abc_fade_out.xml"
     },
     {
         "merged": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_bottom_sheet_slide_out.xml",

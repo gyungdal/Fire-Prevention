@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.codezero.fireprevention"
-        minSdkVersion 15
+        minSdkVersion 17
         targetSdkVersion 23
         versionCode 2
         versionName "In-DEV"
@@ -27,5 +27,6 @@ dependencies {
     compile 'com.journeyapps:zxing-android-embedded:3.0.0@aar'
     compile 'com.google.zxing:core:3.2.0'
     compile 'me.dm7.barcodescanner:zbar:1.8.4'
+    compile 'com.google.code.gson:gson:2.7'
     compile project(':libDaumMapAndroid')
 }

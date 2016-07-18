@@ -297,7 +297,6 @@
     <integer name="viewfinder_border_length">60</integer>
     <integer name="viewfinder_border_width">4</integer>
     <string name="DAUM_MAP_KEY">952d7bd3b757ddb384711627fbd29538</string>
-    <string name="GOOGLE_MAP_KEY">AIzaSyCFchk5yMAzJbUfwOdO-hzqQahG70rAleg</string>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
     <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
@@ -329,6 +328,7 @@
     <string name="caution">알림</string>
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
     <string name="choose_formats">Choose Formats</string>
+    <string name="db_name">sensors.db</string>
     <string name="enrollment">등록</string>
     <string name="enrollment_button">등록 하기</string>
     <string name="first_text">제품을 등록합니다</string>
@@ -351,6 +351,7 @@
     <string name="signuptitle">정말 간단합니다!</string>
     <string name="status">상태</string>
     <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="table_name">sensor</string>
     <string name="title">화재 감지 알림 서비스</string>
     <string name="toggle_flash">Flash</string>
     <string name="unsafe">화재가 감지되었습니다\n버튼을 눌러 확인하세요</string>

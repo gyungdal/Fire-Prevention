@@ -19,7 +19,7 @@
         android:theme="@style/AppTheme" >
 
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -30,7 +30,7 @@
 
         <!-- Add Map Activity -->
         <activity
-            android:name=".AddMapActivity"
+            android:name=".activity.AddMapActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
@@ -40,7 +40,7 @@
         </activity>
 
         <!-- Add Activity -->
-        <activity android:name=".AddActivity"
+        <activity android:name=".activity.AddActivity"
             android:label="화재 경보기 등록"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -51,7 +51,7 @@
 
         <!-- Unsafe Activity -->
         <activity
-            android:name=".UnSafeActivity"
+            android:name=".activity.UnSafeActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>

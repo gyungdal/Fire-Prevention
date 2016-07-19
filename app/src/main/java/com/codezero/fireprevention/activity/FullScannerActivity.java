@@ -17,8 +17,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 
-import com.codezero.fireprevention.AddMapActivity;
-import com.codezero.fireprevention.MainActivity;
 import com.codezero.fireprevention.R;
 import com.codezero.fireprevention.fragment.CameraSelectorDialogFragment;
 import com.codezero.fireprevention.fragment.FormatSelectorDialogFragment;

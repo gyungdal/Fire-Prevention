@@ -75,14 +75,14 @@ MERGED from [com.android.support:support-v4:23.2.1] D:\Company\Code Zero\Fire al
 		ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:16:9-43
 	android:theme
 		ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:19:9-40
-activity#com.codezero.fireprevention.MainActivity
+activity#com.codezero.fireprevention.activity.MainActivity
 ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:21:9-29:20
 	android:label
 		ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:23:13-45
 	android:theme
 		ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:24:13-56
 	android:name
-		ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:22:13-41
+		ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:22:13-50
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
 ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:25:13-28:29
 action#android.intent.action.MAIN
@@ -93,14 +93,14 @@ category#android.intent.category.LAUNCHER
 ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:27:17-77
 	android:name
 		ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:27:27-74
-activity#com.codezero.fireprevention.AddMapActivity
+activity#com.codezero.fireprevention.activity.AddMapActivity
 ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:32:9-40:20
 	android:label
 		ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:34:13-45
 	android:theme
 		ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:35:13-56
 	android:name
-		ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:33:13-43
+		ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:33:13-52
 intent-filter#android.intent.action.VIEW+android.intent.category.DEFAULT
 ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:36:13-39:29
 action#android.intent.action.VIEW
@@ -111,22 +111,22 @@ category#android.intent.category.DEFAULT
 ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:38:17-76
 	android:name
 		ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:38:27-73
-activity#com.codezero.fireprevention.AddActivity
+activity#com.codezero.fireprevention.activity.AddActivity
 ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:43:9-50:20
 	android:label
 		ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:44:13-38
 	android:theme
 		ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:45:13-56
 	android:name
-		ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:43:19-46
-activity#com.codezero.fireprevention.UnSafeActivity
+		ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:43:19-55
+activity#com.codezero.fireprevention.activity.UnSafeActivity
 ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:53:9-61:20
 	android:label
 		ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:55:13-45
 	android:theme
 		ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:56:13-56
 	android:name
-		ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:54:13-43
+		ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:54:13-52
 activity#com.codezero.fireprevention.activity.EnrollmentActivity
 ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:64:9-72:20
 	android:label

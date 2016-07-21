@@ -9,6 +9,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +24,7 @@ import com.codezero.fireprevention.DB.DBConfig;
 import com.codezero.fireprevention.DB.DBHelper;
 import com.codezero.fireprevention.R;
 import com.codezero.fireprevention.network.getLocateInfo;
+import com.codezero.fireprevention.network.setSensorData;
 
 import java.util.HashMap;
 
@@ -69,7 +71,9 @@ public class AddMapActivity extends AppCompatActivity {
                     }
                     ActivityCompat.requestPermissions(AddMapActivity.this,
                             new String[]{Manifest.permission.INTERNET}, 2);
-                    HashMap<String, Double> Locate = getLocateInfo.execute(productLocate.getText().toString()).get();
+                    HashMap<String, Double> Locate =
+                            getLocateInfo.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR
+                                    ,productLocate.getText().toString()).get();
                     if(Locate != null) {
                         double lng = Locate.get("lng");
                         double lat = Locate.get("lat");
@@ -98,6 +102,7 @@ public class AddMapActivity extends AppCompatActivity {
             Log.i(TAG, "lng : " + lng);
         }
     }
+
     public void insert(int key, String name, double lng, double lat){
         db = database.getWritableDatabase();
 
@@ -108,6 +113,8 @@ public class AddMapActivity extends AppCompatActivity {
         values.put("lat", lat);
         db.insert(DBConfig.TABLE_NAME, null, values);
         select();
+        setSensorData setSensorData = new setSensorData(getApplicationContext());
+        setSensorData.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, key);
     }
     private void setToolbar(){
         if(toolbar != null){

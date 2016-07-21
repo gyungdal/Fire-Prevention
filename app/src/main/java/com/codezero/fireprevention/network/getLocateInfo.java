@@ -4,14 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-
-
-import com.google.gson.JsonParser;
-
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -72,6 +64,8 @@ public class getLocateInfo extends AsyncTask<String, Void, HashMap<String, Doubl
     private HashMap<String, Double> parse(String input) {
         HashMap<String, Double> result = new HashMap<>();
         try{
+            if(input.lastIndexOf("</location>") - input.indexOf("<location>") > 200)
+                return null;
             String temp = input.substring(input.indexOf("<location>") + "<location>".length(), input.indexOf("</location>")).trim();
             Double lng = Double.valueOf(temp.substring(temp.indexOf("<lng>") + "<lng>".length(), temp.indexOf("</lng>")));
             Double lat = Double.valueOf(temp.substring(temp.indexOf("<lat>") + "<lat>".length(), temp.indexOf("</lat>")));

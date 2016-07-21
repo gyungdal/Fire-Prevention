@@ -1,8 +1,10 @@
 package com.codezero.fireprevention.DB;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 /**
  * Created by GyungDal on 2016-07-18.
@@ -15,7 +17,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "create table" + DBConfig.TABLE_NAME +"(" +
+        String sql = "create table " + DBConfig.TABLE_NAME +"(" +
                 "productKey integer primary key, " +
                 "name text, " +
                 "lng double, " +
@@ -29,4 +31,5 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(sql);
         onCreate(db); // 테이블을 지웠으므로 다시 테이블을 만들어주는 과정
     }
+
 }

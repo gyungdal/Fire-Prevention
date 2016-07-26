@@ -15,7 +15,7 @@ public class NoticeManager {
     private Context context;
     private String name;
     private double lat, lng;
-    private static int i = 10;
+    private static int i = 5632;
     public NoticeManager(Context context, String name, double lat, double lng){
         this.context = context;
         this.name = name;

@@ -30,14 +30,14 @@ public class ManagerActivity extends AppCompatActivity {
     private TextView statusText, numberText;
     private DBHelper database;
     private SQLiteDatabase db;
-
+    private static final int ENABLE = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager);
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         setToolbar();
-        database = new DBHelper(ManagerActivity.this, DBConfig.DB_NAME, null, 1);
+        database = new DBHelper(ManagerActivity.this, DBConfig.DB_NAME, null, 2);
 
         statusImage = (ImageView)findViewById(R.id.statusImage);
         statusText = (TextView)findViewById(R.id.statusText);
@@ -77,16 +77,19 @@ public class ManagerActivity extends AppCompatActivity {
         db = database.getReadableDatabase();
         Cursor c = db.query(DBConfig.TABLE_NAME, null, null, null, null, null, null);
         while(c.moveToNext()){
-            result++;
             int key = c.getInt(c.getColumnIndex("productKey"));
             String name = c.getString(c.getColumnIndex("name"));
             double lat  = c.getDouble(c.getColumnIndex("lat"));
             double lng = c.getDouble(c.getColumnIndex("lng"));
+            int flag = c.getInt(c.getColumnIndex("flag"));
             Log.i(TAG, "---- DB DATA ----");
             Log.i(TAG, "key : " + key);
             Log.i(TAG, "name : " + name);
             Log.i(TAG, "lat : " + lat);
             Log.i(TAG, "lng : " + lng);
+            Log.i(TAG, "flag : " + flag);
+            if(flag == ENABLE)
+                result++;
         }
         db.close();
         return result;

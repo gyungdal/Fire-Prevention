@@ -30,7 +30,7 @@ public class setSensorData extends AsyncTask<Integer, Void, Void>{
 
     public setSensorData(Context context){
         this.context = context;
-        database = new DBHelper(context, DBConfig.DB_NAME, null, 1);
+        database = new DBHelper(context, DBConfig.DB_NAME, null, 2);
     }
 
     @Override

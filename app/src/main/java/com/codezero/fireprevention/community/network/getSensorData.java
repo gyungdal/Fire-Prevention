@@ -39,7 +39,7 @@ public class getSensorData extends AsyncTask<Void, Void, Void>{
 
     public getSensorData(Context context){
         this.context = context;
-        database = new DBHelper(context, DBConfig.DB_NAME, null, 1);
+        database = new DBHelper(context, DBConfig.DB_NAME, null, 2);
     }
 
     @Override
@@ -121,9 +121,9 @@ public class getSensorData extends AsyncTask<Void, Void, Void>{
         List<Integer> result = new ArrayList<>();
         SQLiteDatabase db = database.getReadableDatabase();
         Cursor c = db.query(DBConfig.TABLE_NAME, null, null, null, null, null, null);
-        int i = 0;
         while (c.moveToNext()) {
-            result.add(c.getInt(c.getColumnIndex("productKey")));
+            if(c.getInt(c.getColumnIndex("flag")) == 1)
+                result.add(c.getInt(c.getColumnIndex("productKey")));
         }
         return result;
     }

@@ -19,15 +19,18 @@ public class DBHelper extends SQLiteOpenHelper {
                 "productKey integer primary key, " +
                 "name text, " +
                 "lng double, " +
-                "lat double);";
+                "lat double, " +
+                "flag integer);";
         db.execSQL(sql);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String sql = "drop table if exists sensor";
-        db.execSQL(sql);
-        onCreate(db); // 테이블을 지웠으므로 다시 테이블을 만들어주는 과정
+        if(oldVersion < newVersion) {
+            String sql = "drop table " + DBConfig.TABLE_NAME;
+            db.execSQL(sql);
+            onCreate(db); // 테이블을 지웠으므로 다시 테이블을 만들어주는 과정
+        }
     }
 
 }

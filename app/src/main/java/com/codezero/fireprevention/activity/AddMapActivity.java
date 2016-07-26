@@ -48,7 +48,7 @@ public class AddMapActivity extends AppCompatActivity {
         productName = (EditText)findViewById(R.id.productName);
         productSet = (Button)findViewById(R.id.set);
         setToolbar();
-        database = new DBHelper(AddMapActivity.this, DBConfig.DB_NAME, null, 1);
+        database = new DBHelper(AddMapActivity.this, DBConfig.DB_NAME, null, 2);
         //현재 화면 context, 파일 명, 커서 팩토리, 버전 번호
         Intent intent = getIntent();
         if(intent != null){
@@ -95,11 +95,13 @@ public class AddMapActivity extends AppCompatActivity {
             String name = c.getString(c.getColumnIndex("name"));
             double lat  = c.getDouble(c.getColumnIndex("lat"));
             double lng = c.getDouble(c.getColumnIndex("lng"));
+            int flag = c.getInt(c.getColumnIndex("flag"));
             Log.i(TAG, "---- DB DATA ----");
             Log.i(TAG, "key : " + key);
             Log.i(TAG, "name : " + name);
             Log.i(TAG, "lat : " + lat);
             Log.i(TAG, "lng : " + lng);
+            Log.i(TAG, "flag : " + flag);
         }
         db.close();
     }
@@ -112,6 +114,7 @@ public class AddMapActivity extends AppCompatActivity {
         values.put("name", name);
         values.put("lng", lng);
         values.put("lat", lat);
+        values.put("flag", 1);
         db.insert(DBConfig.TABLE_NAME, null, values);
         select();
         setSensorData setSensorData = new setSensorData(getApplicationContext());

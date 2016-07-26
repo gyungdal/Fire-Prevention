@@ -23,24 +23,25 @@ public class StartReceiver extends BroadcastReceiver {
     private static final String TAG = "Background Work";
     private TimerTask mTask;
     private Timer mTimer;
-
+    private getSensorData thread;
+    private static final int TIME = 1000 * 60 * 5;
     @Override
     public void onReceive(final Context context, Intent intent) {
         Log.i(TAG, intent.getAction());
         setup(context);
         //test(context);
         Log.i(TAG, "Start");
+        thread = new getSensorData(context);
 
         mTask = new TimerTask() {
             @Override
             public void run() {
                 Log.i("Start Receive", "Get Sensor Data");
-                getSensorData thread = new getSensorData(context);
                 thread.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
             }
         };
-        mTimer = new Timer();
-        mTimer.schedule(mTask, 0 ,1000 * 60 * 5);
+        mTimer = new Timer(true);
+        mTimer.schedule(mTask, 0, TIME);
         Log.i(TAG, "Success");
     }
 

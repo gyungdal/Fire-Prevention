@@ -1,4 +1,4 @@
-package com.codezero.fireprevention.network;
+package com.codezero.fireprevention.community.network;
 
 import android.os.AsyncTask;
 import android.util.Log;

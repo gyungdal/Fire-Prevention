@@ -1,13 +1,27 @@
 package com.codezero.fireprevention.activity;
 
+import android.app.Activity;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.codezero.fireprevention.R;
 
@@ -16,24 +30,33 @@ import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
 /**
  * Created by GyungDal on 2016-04-21.
- * TODO : 다른 기기들에서 주소를 받아서 마커 생성
  */
 public class UnSafeActivity extends AppCompatActivity implements
                             MapView.MapViewEventListener, MapView.POIItemEventListener,
-                            MapView.OpenAPIKeyAuthenticationResultListener {
+                            MapView.OpenAPIKeyAuthenticationResultListener, View.OnClickListener{
 
     private static final String TAG = "UnSafe Acitivty";
-    private MapPoint Center = MapPoint.mapPointWithGeoCoord(36.391883, 127.363350);
-    private static final MapPoint SCHOOL = MapPoint.mapPointWithGeoCoord(36.391883, 127.363350);
+    double lat, lng;
+    String name;
     private Toolbar toolbar;
-
+    private Button unsafeButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_unsafe);
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         setToolbar();
-
+        unsafeButton = (Button)findViewById(R.id.unSafeButton);
+        Intent intent = getIntent();
+        if(intent != null){
+            lat = intent.getDoubleExtra("lat", -1);
+            lng = intent.getDoubleExtra("lng", -1);
+            name = intent.getStringExtra("name");
+            if(lat == -1 || lng == -1){
+                Toast.makeText(getApplicationContext(), "Intent 실패", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        }
         MapView mapView = new MapView(this);
         mapView.setDaumMapApiKey(this.getString(R.string.DAUM_MAP_KEY));
         mapView.zoomIn(true);
@@ -43,17 +66,16 @@ public class UnSafeActivity extends AppCompatActivity implements
         mapViewContainer.addView(mapView);
         mapView.setMapViewEventListener(this); //this에 MapView.MapViewEventListener 구현
         mapView.setPOIItemEventListener(this);
-        mapView.setMapCenterPointAndZoomLevel(SCHOOL, 0, true);
+        mapView.setMapCenterPointAndZoomLevel(MapPoint.mapPointWithGeoCoord(lat, lng), 0, true);
 
         MapPOIItem mSchool = new MapPOIItem();
-        mSchool.setItemName("부리야!!!!");
+        mSchool.setItemName(name);
         mSchool.setTag(0);
-        mSchool.setMapPoint(Center);
+        mSchool.setMapPoint(MapPoint.mapPointWithGeoCoord(lat, lng));
         mSchool.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
         mSchool.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
         mapView.addPOIItem(mSchool);
-
-
+        unsafeButton.setOnClickListener(this);
     }
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -73,6 +95,8 @@ public class UnSafeActivity extends AppCompatActivity implements
         }
         return super.onKeyUp(keyCode, event);
     }
+
+
     private void setToolbar(){
         if(toolbar != null){
             setSupportActionBar(toolbar);
@@ -156,4 +180,121 @@ public class UnSafeActivity extends AppCompatActivity implements
     public void onDraggablePOIItemMoved(MapView mapView, MapPOIItem mapPOIItem, MapPoint mapPoint) {
 
     }
+
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()){
+            case R.id.unSafeButton :
+                Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+                String smsBody = "HELP!!!";
+                sendIntent.putExtra("sms_body", smsBody); // 보낼 문자
+                sendIntent.putExtra("address", "01074776900"); // 받는사람 번호
+                sendIntent.setType("vnd.android-dir/mms-sms");
+                startActivity(sendIntent);
+                break;
+        }
+    }
+/*
+    private void OpenCategoryDialogBox() {
+        LayoutInflater layoutInflater = LayoutInflater.from(getApplicationContext());
+        View promptView = layoutInflater.inflate(R.layout.addnewcategory, null);
+        final AlertDialog.Builder alert = new AlertDialog.Builder(getApplicationContext());
+        alert.setTitle("화재 신고");
+        alert.setView(promptView);
+
+        final EditText input = (EditText) promptView
+                .findViewById(R.id.etCategory);
+
+        input.requestFocus();
+        input.setHint("내용을 입력해주세요.");
+        input.setTextColor(Color.BLACK);
+
+        alert.setPositiveButton("전송", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                String newCategoryName = input.getText().toString();
+
+                // Do something with value!
+
+                if (newCategoryName.equals("")) {
+                    input.setError("Name Required");
+                    OpenCategoryDialogBox();
+                } else {
+                    String value = input.getText().toString();
+                    sendSMS("01074776900", value);
+
+
+                }
+            }
+
+        });
+        alert.setNegativeButton("취소",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        // Canceled.
+
+                        Toast.makeText(getApplicationContext(),
+                                "Ok Clicked", Toast.LENGTH_SHORT).show();
+
+
+                    }
+                });
+
+        // create an alert dialog
+        AlertDialog alert1 = alert.create();
+        alert1.show();
+    }
+
+    private void sendSMS(String smsNumber, String smsText){
+        PendingIntent sentIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, new Intent("SMS_SENT_ACTION"), 0);
+        PendingIntent deliveredIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, new Intent("SMS_DELIVERED_ACTION"), 0);
+
+        registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                switch(getResultCode()){
+                    case Activity.RESULT_OK:
+                        // 전송 성공
+                        Toast.makeText(context, "전송 완료", Toast.LENGTH_SHORT).show();
+                        break;
+                    case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
+                        // 전송 실패
+                        Toast.makeText(context, "전송 실패", Toast.LENGTH_SHORT).show();
+                        break;
+                    case SmsManager.RESULT_ERROR_NO_SERVICE:
+                        // 서비스 지역 아님
+                        Toast.makeText(context, "서비스 지역이 아닙니다", Toast.LENGTH_SHORT).show();
+                        break;
+                    case SmsManager.RESULT_ERROR_RADIO_OFF:
+                        // 무선 꺼짐
+                        Toast.makeText(context, "무선(Radio)가 꺼져있습니다", Toast.LENGTH_SHORT).show();
+                        break;
+                    case SmsManager.RESULT_ERROR_NULL_PDU:
+                        // PDU 실패
+                        Toast.makeText(context, "PDU Null", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        }, new IntentFilter("SMS_SENT_ACTION"));
+
+        registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                switch (getResultCode()){
+                    case Activity.RESULT_OK:
+                        // 도착 완료
+                        Toast.makeText(context, "SMS 도착 완료", Toast.LENGTH_SHORT).show();
+                        break;
+                    case Activity.RESULT_CANCELED:
+                        // 도착 안됨
+                        Toast.makeText(context, "SMS 도착 실패", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        }, new IntentFilter("SMS_DELIVERED_ACTION"));
+
+        SmsManager mSmsManager = SmsManager.getDefault();
+        mSmsManager.sendTextMessage(smsNumber, null, smsText, sentIntent, deliveredIntent);
+    }*/
+
+
 }

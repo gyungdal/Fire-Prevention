@@ -1,10 +1,8 @@
-package com.codezero.fireprevention.DB;
+package com.codezero.fireprevention.database;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 /**
  * Created by GyungDal on 2016-07-18.

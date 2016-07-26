@@ -3383,14 +3383,7 @@
                     "endOffset": 41716
                 },
                 "from": {
-                    "file": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\src\\main\\res\\values\\strings.xml",
-                    "position": {
-                        "startLine": 40,
-                        "startColumn": 4,
-                        "startOffset": 1809,
-                        "endColumn": 46,
-                        "endOffset": 1851
-                    }
+                    "file": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\src\\main\\res\\values\\strings.xml"
                 }
             },
             {
@@ -3666,14 +3659,7 @@
                     "endOffset": 42905
                 },
                 "from": {
-                    "file": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\src\\main\\res\\values\\strings.xml",
-                    "position": {
-                        "startLine": 41,
-                        "startColumn": 4,
-                        "startOffset": 1857,
-                        "endColumn": 45,
-                        "endOffset": 1898
-                    }
+                    "file": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\src\\main\\res\\values\\strings.xml"
                 }
             },
             {
@@ -3856,7 +3842,15 @@
                     "endOffset": 44625
                 },
                 "from": {
-                    "file": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\src\\main\\res\\values\\styles.xml"
+                    "file": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 387,
+                        "endLine": 12,
+                        "endColumn": 12,
+                        "endOffset": 534
+                    }
                 }
             },
             {

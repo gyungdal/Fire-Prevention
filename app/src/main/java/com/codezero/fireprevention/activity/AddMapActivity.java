@@ -20,11 +20,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.codezero.fireprevention.DB.DBConfig;
-import com.codezero.fireprevention.DB.DBHelper;
+import com.codezero.fireprevention.database.DBConfig;
+import com.codezero.fireprevention.database.DBHelper;
 import com.codezero.fireprevention.R;
-import com.codezero.fireprevention.network.getLocateInfo;
-import com.codezero.fireprevention.network.setSensorData;
+import com.codezero.fireprevention.community.network.getLocateInfo;
+import com.codezero.fireprevention.community.network.setSensorData;
 
 import java.util.HashMap;
 
@@ -101,6 +101,7 @@ public class AddMapActivity extends AppCompatActivity {
             Log.i(TAG, "lat : " + lat);
             Log.i(TAG, "lng : " + lng);
         }
+        db.close();
     }
 
     public void insert(int key, String name, double lng, double lat){

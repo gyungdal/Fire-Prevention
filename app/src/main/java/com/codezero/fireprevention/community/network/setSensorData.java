@@ -1,17 +1,21 @@
-package com.codezero.fireprevention.network;
+package com.codezero.fireprevention.community.network;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.codezero.fireprevention.DB.DBConfig;
-import com.codezero.fireprevention.DB.DBHelper;
+import com.codezero.fireprevention.database.DBConfig;
+import com.codezero.fireprevention.database.DBHelper;
+import com.codezero.fireprevention.activity.MainActivity;
 
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
+import org.jsoup.Jsoup;
+
 import java.util.HashMap;
 
 /**
@@ -33,14 +37,23 @@ public class setSensorData extends AsyncTask<Integer, Void, Void>{
     protected Void doInBackground(Integer... params) {
         try {
             HashMap<String, Double> data = getData(params[0]);
-            URL url = new URL(front + params[0] + mid + data.get("lat") + end + data.get("lng"));
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setReadTimeout(4000);
-            conn.setConnectTimeout(7000);
-            conn.setRequestMethod("GET");
-            conn.connect();
-            if(conn.getResponseCode()!=HttpURLConnection.HTTP_OK)
-                Log.i("Set Sensor Value", "Http Code is..." + conn.getResponseCode());
+            Jsoup.connect(front + params[0] + mid + data.get("lat") + end + data.get("lng"))
+                    .get();
+            NotificationManager notificationManager =
+                    (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
+
+            Intent mainIntent = new Intent(context, MainActivity.class);
+            PendingIntent pendingIntent =
+                    PendingIntent.getActivity(context, 1, mainIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+            Notification.Builder builder = new Notification.Builder(context)
+                    .setSmallIcon(android.R.drawable.stat_notify_sync)
+                    .setTicker("Alert")
+                    .setContentTitle("Setting Sensor result")
+                    .setContentText("Sensor Setting Success!!!")
+                    .setContentIntent(pendingIntent)
+                    .setAutoCancel(true);
+            Notification notification = builder.build();
+            notificationManager.notify(0, notification);
         }catch(Exception e){
             Log.e("Set Sensor Value", e.getMessage());
         }

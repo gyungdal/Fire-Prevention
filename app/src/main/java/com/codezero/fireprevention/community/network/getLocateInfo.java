@@ -1,6 +1,5 @@
-package com.codezero.fireprevention.network;
+package com.codezero.fireprevention.community.network;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;

@@ -7,4 +7,8 @@ public class DBConfig {
     public static final String DB_NAME = "data.db";
     public static final String TABLE_NAME = "sensors";
     public static boolean isSafe;
+
+    static {
+        isSafe = true;
+    }
 }

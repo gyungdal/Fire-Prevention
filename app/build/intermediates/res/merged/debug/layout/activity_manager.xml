@@ -20,10 +20,10 @@
                 android:background="?attr/colorPrimary"
                 android:title="@string/app_name"/>
         </android.support.design.widget.AppBarLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/linearLayout"
             android:layout_marginTop="150dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
@@ -70,6 +70,13 @@
                 android:layout_width="fill_parent"
                 android:layout_height="3dp"
                 android:background="@android:color/darker_gray" />
+
+            <ListView
+                android:layout_marginTop="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/statusImage"
+                android:id="@+id/productList" />
 
         </RelativeLayout>
 

@@ -39,13 +39,14 @@ public class MainActivity extends AppCompatActivity
     private static final boolean SAFE = false;
     public static boolean check; // true : danger
     private ImageView imageView;
-    private TextView textView;
+    private TextView textView, status;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        status = getStatusTextView();
         imageView = (ImageView)findViewById(R.id.statusImage);
         textView = (TextView)findViewById(R.id.statusText);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -59,14 +60,22 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    public TextView getStatusTextView(){
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        View header=navigationView.getHeaderView(0);
+        return (TextView)header.findViewById(R.id.status);
+
+    }
     private void setStatus(){
         if(DBConfig.isSafe){
             imageView.setImageResource(R.drawable.safe);
             textView.setText(getText(R.string.safe));
+            status.setText("상태 : " + "안전");
         }else{
             imageView.setImageResource(R.drawable.unsafe);
             textView.setText(getText(R.string.unsafe));
-            imageView.setOnClickListener(null);
+            status.setText("상태 : " + "위험");
         }
     }
 
@@ -104,16 +113,6 @@ public class MainActivity extends AppCompatActivity
 
     public void click(View v){
         switch(v.getId()) {
-            case R.id.alarm:
-                Log.i(TAG, "alarm");
-                break;
-            case R.id.status:
-                Log.i(TAG, "status");
-                break;
-            case R.id.home:
-                Toast.makeText(getApplicationContext(), "이미 홈입니다.", Toast.LENGTH_SHORT).show();
-                Log.i(TAG, "HOME");
-                break;
             case R.id.insert:
                 startActivity(new Intent(this, AddActivity.class));
                 Log.i(TAG, "등록");

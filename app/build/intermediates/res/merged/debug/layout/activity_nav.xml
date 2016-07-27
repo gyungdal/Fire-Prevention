@@ -25,17 +25,17 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
 
-                <Button
+                <TextView
                     android:id="@+id/alarm"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:layout_weight="1.0"
                     android:background="@drawable/test"
                     android:textColor="@android:color/black"
-                    android:textSize="16sp"
+                    android:textSize="16dp"
+                    android:gravity="center"
                     android:textStyle="bold"
-                    android:text="알림"
-                    android:onClick="click" />
+                    android:text="알림" />
 
                 <View
                     android:layout_width="1dip"
@@ -44,34 +44,18 @@
                     android:layout_height="fill_parent"
                     android:background="@android:color/darker_gray" />
 
-                <Button
+                <TextView
                     android:id="@+id/status"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:layout_weight="1.0"
                     android:background="@drawable/test"
                     android:textColor="@android:color/black"
-                    android:textSize="16sp"
+                    android:textSize="16dp"
+                    android:gravity="center"
                     android:textStyle="bold"
-                    android:text="상태"
-                    android:onClick="click" />
+                    android:text="상태" />
             </LinearLayout>
-
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-
-            <Button
-                android:id="@+id/home"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:background="@drawable/test"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:text="홈"
-                android:textStyle="bold"
-                android:onClick="click" />
 
             <View
                 android:layout_width="fill_parent"
@@ -84,7 +68,7 @@
                 android:layout_height="48dp"
                 android:background="@drawable/test"
                 android:textColor="@android:color/black"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 android:text="화재경보기 등록"
                 android:textStyle="bold"
                 android:onClick="click" />
@@ -98,7 +82,7 @@
                 android:layout_height="48dp"
                 android:background="@drawable/test"
                 android:textColor="@android:color/black"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 android:text="화재경보기 관리"
                 android:textStyle="bold"
                 android:onClick="click" />
@@ -113,7 +97,7 @@
                 android:layout_height="48dp"
                 android:background="@drawable/test"
                 android:textColor="@android:color/black"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 android:text="화재 시 대피 요령"
                 android:textStyle="bold"
                 android:onClick="click" />
@@ -206,6 +190,7 @@
             android:layout_width="wrap_content"
             android:background="@drawable/red_button"
             android:text="긴급 SOS"
+            android:textSize="16dp"
             android:textStyle="bold"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"

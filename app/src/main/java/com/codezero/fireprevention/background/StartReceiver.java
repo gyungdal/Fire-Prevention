@@ -15,6 +15,7 @@ import android.util.Log;
 import com.codezero.fireprevention.activity.MainActivity;
 import com.codezero.fireprevention.activity.UnSafeActivity;
 import com.codezero.fireprevention.community.network.getSensorData;
+import com.codezero.fireprevention.database.DBConfig;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -30,6 +31,7 @@ public class StartReceiver extends BroadcastReceiver {
         Log.i(TAG, intent.getAction());
         setup(context);
         //test(context);
+        DBConfig.isSafe = true;
         Log.i(TAG, "Start");
         thread = new getSensorData(context);
 
@@ -43,6 +45,7 @@ public class StartReceiver extends BroadcastReceiver {
         mTimer = new Timer(true);
         mTimer.schedule(mTask, 0, TIME);
         Log.i(TAG, "Success");
+        while(true);
     }
 
     private void setup(Context context){

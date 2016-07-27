@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
@@ -24,6 +25,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.codezero.fireprevention.R;
+import com.codezero.fireprevention.community.network.getSensorAddress;
 
 import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;
@@ -37,7 +39,7 @@ public class UnSafeActivity extends AppCompatActivity implements
 
     private static final String TAG = "UnSafe Acitivty";
     double lat, lng;
-    String name;
+    private String address, name;
     private Toolbar toolbar;
     private Button unsafeButton;
     @Override
@@ -76,6 +78,13 @@ public class UnSafeActivity extends AppCompatActivity implements
         mSchool.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
         mapView.addPOIItem(mSchool);
         unsafeButton.setOnClickListener(this);
+        getSensorAddress getAddress = new getSensorAddress(getApplicationContext());
+        try {
+            address = getAddress.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, lat, lng).get();
+        }catch(Exception e){
+            Log.e(TAG, e.getMessage());
+        }
+
     }
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -186,8 +195,7 @@ public class UnSafeActivity extends AppCompatActivity implements
         switch(v.getId()){
             case R.id.unSafeButton :
                 Intent sendIntent = new Intent(Intent.ACTION_VIEW);
-                String smsBody = "HELP!!!";
-                sendIntent.putExtra("sms_body", smsBody); // 보낼 문자
+                sendIntent.putExtra("sms_body", address + "에서 도움을 요청합니다!!!"); // 보낼 문자
                 sendIntent.putExtra("address", "01074776900"); // 받는사람 번호
                 sendIntent.setType("vnd.android-dir/mms-sms");
                 startActivity(sendIntent);

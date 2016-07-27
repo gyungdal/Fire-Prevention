@@ -68,6 +68,12 @@ public class MainActivity extends AppCompatActivity
 
     }
     private void setStatus(){
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ManagerActivity.class));
+            }
+        });
         if(DBConfig.isSafe){
             imageView.setImageResource(R.drawable.safe);
             textView.setText(getText(R.string.safe));
@@ -75,7 +81,7 @@ public class MainActivity extends AppCompatActivity
         }else{
             imageView.setImageResource(R.drawable.unsafe);
             textView.setText(getText(R.string.unsafe));
-            status.setText("상태 : " + "위험");
+            status.setText("상태 : " + (DBConfig.NotSafeNumber >= 2 ? "위험" : "주의"));
         }
     }
 
@@ -103,7 +109,7 @@ public class MainActivity extends AppCompatActivity
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=K64g7dqK9FE")));
                 Log.i(TAG, "대피요령");
                 break;
-            case R.id.SOS:
+            /*case R.id.SOS:
                 Intent sendIntent = new Intent(Intent.ACTION_VIEW);
                 String smsBody = "HELP!!!";
                 sendIntent.putExtra("sms_body", smsBody); // 보낼 문자
@@ -111,7 +117,7 @@ public class MainActivity extends AppCompatActivity
                 sendIntent.setType("vnd.android-dir/mms-sms");
                 startActivity(sendIntent);
                 Log.i(TAG, "긴급 SOS");
-                break;
+                break;*/
         }
     }
     @SuppressWarnings("StatementWithEmptyBody")

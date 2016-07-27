@@ -44,7 +44,8 @@ public class getSensorData extends AsyncTask<Void, Void, Void>{
 
     @Override
     protected Void doInBackground(Void... params) {
-        isSafe = true;
+        isSafe = DBConfig.isSafe = true;
+        DBConfig.NotSafeNumber = 0;
         Log.i("Get Sensor Data Start", "YEAH");
         try {
             //온라인이 아닐경우 그냥 대기
@@ -96,7 +97,9 @@ public class getSensorData extends AsyncTask<Void, Void, Void>{
                         alert(sensor + "번 센서", "아무런 설정이 되어있지 않은 센서");
                         break;
                     default: {
-                        if (Double.valueOf(fire) > 60) {
+                        if (Double.valueOf(fire) > 750 || Double.valueOf(smoke) > 1
+                                || Double.valueOf(temp) > 60) {
+                            DBConfig.NotSafeNumber++;
                             isSafe = DBConfig.isSafe = false;
                             NoticeManager noticeManager =
                                     new NoticeManager(context, getName(sensor)

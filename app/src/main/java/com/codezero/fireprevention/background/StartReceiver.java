@@ -31,7 +31,6 @@ public class StartReceiver extends BroadcastReceiver {
         Log.i(TAG, intent.getAction());
         setup(context);
         //test(context);
-        DBConfig.isSafe = true;
         Log.i(TAG, "Start");
         thread = new getSensorData(context);
 

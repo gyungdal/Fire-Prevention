@@ -10,20 +10,18 @@
         android:id="@+id/ProductName"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="30dp"
-        android:textSize="30dp"
-        android:textColor="@android:color/background_dark"
-        android:textStyle="bold"
-        android:layout_marginTop="30dp" />
+        android:textSize="20dp"
+        android:layout_margin="10dp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"/>
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:focusable="false"
         android:id="@+id/ProductState"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
         android:layout_alignBottom="@+id/ProductName"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />

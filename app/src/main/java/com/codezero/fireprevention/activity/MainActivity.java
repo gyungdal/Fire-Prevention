@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
@@ -30,6 +31,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.codezero.fireprevention.R;
+import com.codezero.fireprevention.community.network.getSensorData;
 import com.codezero.fireprevention.database.DBConfig;
 
 public class MainActivity extends AppCompatActivity
@@ -42,6 +44,12 @@ public class MainActivity extends AppCompatActivity
     private TextView textView, status;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        try {
+            getSensorData get = new getSensorData(getApplicationContext());
+            get.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR).get();
+        }catch(Exception e){
+            Log.e(TAG, e.getMessage());
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -106,7 +114,8 @@ public class MainActivity extends AppCompatActivity
                 Log.i(TAG, "관리");
                 break;
             case R.id.runWhenFire:
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=K64g7dqK9FE")));
+                startActivity(new Intent(this, RunWhenFireActivity.class));
+                //startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=K64g7dqK9FE")));
                 Log.i(TAG, "대피요령");
                 break;
             /*case R.id.SOS:

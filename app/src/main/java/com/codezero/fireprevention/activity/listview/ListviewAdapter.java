@@ -1,7 +1,10 @@
 package com.codezero.fireprevention.activity.listview;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +13,8 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.codezero.fireprevention.R;
+import com.codezero.fireprevention.database.DBConfig;
+import com.codezero.fireprevention.database.DBHelper;
 
 import java.util.ArrayList;
 
@@ -43,8 +48,9 @@ public class ListViewAdapter extends BaseAdapter {
         return position;
     }
 
+
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position,View convertView, ViewGroup parent) {
         ViewHolder holder;
         if(convertView == null){
             holder = new ViewHolder();
@@ -62,11 +68,7 @@ public class ListViewAdapter extends BaseAdapter {
 
         holder.name.setText(data.getName());
         holder.state.setChecked(data.getState());
-        return null;
+        return convertView;
     }
 
-    private class ViewHolder{
-        public TextView name;
-        public CheckBox state;
-    }
 }

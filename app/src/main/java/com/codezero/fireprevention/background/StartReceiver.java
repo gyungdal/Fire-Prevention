@@ -7,6 +7,7 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -17,34 +18,33 @@ import com.codezero.fireprevention.activity.UnSafeActivity;
 import com.codezero.fireprevention.community.network.getSensorData;
 import com.codezero.fireprevention.database.DBConfig;
 
+import java.io.Serializable;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class StartReceiver extends BroadcastReceiver {
     private static final String TAG = "Background Work";
-    private TimerTask mTask;
-    private Timer mTimer;
-    private getSensorData thread;
-    private static final int TIME = 1000 * 60 * 5;
+    private static final long TIME = 1000 * 60 * 5;
+    private getSensorData get;
     @Override
     public void onReceive(final Context context, Intent intent) {
         Log.i(TAG, intent.getAction());
         setup(context);
-        //test(context);
-        Log.i(TAG, "Start");
-        thread = new getSensorData(context);
-
-        mTask = new TimerTask() {
+        //test(context)
+        new Thread(){
             @Override
-            public void run() {
-                Log.i("Start Receive", "Get Sensor Data");
-                thread.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+            public void run(){
+                while(true) {
+                    get = new getSensorData(context);
+                    get.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                    try {
+                        Thread.sleep(TIME);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
-        };
-        mTimer = new Timer(true);
-        mTimer.schedule(mTask, 0, TIME);
-        Log.i(TAG, "Success");
-        while(true);
+        }.run();
     }
 
     private void setup(Context context){

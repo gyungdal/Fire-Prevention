@@ -8,12 +8,16 @@
         "source": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\layout\\abc_screen_content_include.xml"
     },
     {
-        "merged": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
-        "source": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\layout\\abc_search_view.xml"
+        "merged": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_run_when_fire.xml",
+        "source": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\src\\main\\res\\layout\\activity_run_when_fire.xml"
     },
     {
         "merged": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
         "source": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\layout\\abc_action_bar_up_container.xml"
+    },
+    {
+        "merged": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
+        "source": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\layout\\abc_search_view.xml"
     },
     {
         "merged": "D:\\Company\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
@@ -470,6 +474,10 @@
     {
         "merged": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
         "source": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\layout\\abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\layout\\tab_item.xml",
+        "source": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\src\\main\\res\\layout\\tab_item.xml"
     },
     {
         "merged": "D:\\Company\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",

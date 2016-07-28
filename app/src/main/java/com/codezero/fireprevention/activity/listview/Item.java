@@ -19,4 +19,8 @@ public class Item {
         return state;
     }
 
+    public void setState(boolean state){
+        this.state = state;
+    }
+
 }

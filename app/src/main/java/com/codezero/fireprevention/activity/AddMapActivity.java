@@ -27,6 +27,7 @@ import com.codezero.fireprevention.community.network.getLocateInfo;
 import com.codezero.fireprevention.community.network.setSensorData;
 
 import java.util.HashMap;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by GyungDal on 2016-07-05.
@@ -118,7 +119,16 @@ public class AddMapActivity extends AppCompatActivity {
         db.insert(DBConfig.TABLE_NAME, null, values);
         select();
         setSensorData setSensorData = new setSensorData(getApplicationContext());
-        setSensorData.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, key);
+        try {
+            if (setSensorData.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, key).get() == null) {
+                startActivity(new Intent(AddMapActivity.this, MainActivity.class));
+                AddMapActivity.this.finish();
+            }
+        }catch(ExecutionException e){
+            Log.e(TAG, e.getMessage());
+        }catch(InterruptedException e){
+            Log.e(TAG, "Interrupt" + e.getMessage());
+        }
     }
     private void setToolbar(){
         if(toolbar != null){

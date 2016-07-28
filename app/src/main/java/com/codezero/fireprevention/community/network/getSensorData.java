@@ -33,10 +33,10 @@ public class getSensorData extends AsyncTask<Void, Void, Void>{
     private static final int GET_ANDROID_DATA = 2;
     private static final int GET_NULL = 3;
     private boolean isSafe;
-    private Context context;
+    private static Context context;
     private DBHelper database;
     private int getType;
-
+    private static final long TIME = 1000 * 60;
     public getSensorData(Context context){
         this.context = context;
         database = new DBHelper(context, DBConfig.DB_NAME, null, 2);
@@ -49,7 +49,9 @@ public class getSensorData extends AsyncTask<Void, Void, Void>{
         Log.i("Get Sensor Data Start", "YEAH");
         try {
             //온라인이 아닐경우 그냥 대기
-            while(!isOnline());
+            while(isOnline()){
+                Thread.sleep(TIME);
+            }
 
             List<Integer> sensors = getAllProductKey();
             for(int sensor : sensors) {
@@ -140,6 +142,7 @@ public class getSensorData extends AsyncTask<Void, Void, Void>{
         }
         return null;
     }
+
     private boolean isOnline(){
         Log.i("GET info", "Is Online???");
         ConnectivityManager conMgr = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);

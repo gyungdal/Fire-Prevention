@@ -84,12 +84,12 @@
         "source": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\src\\main\\res\\drawable\\side_nav_bar.xml"
     },
     {
-        "merged": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\blue_button.xml",
-        "source": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\src\\main\\res\\drawable\\blue_button.xml"
-    },
-    {
         "merged": "D:\\Company\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_borderless_material.xml",
         "source": "D:\\Company\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_btn_borderless_material.xml"
+    },
+    {
+        "merged": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\blue_button.xml",
+        "source": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\src\\main\\res\\drawable\\blue_button.xml"
     },
     {
         "merged": "D:\\Company\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\black_button.xml",
@@ -116,6 +116,10 @@
         "source": "D:\\Company\\Fire alarm\\fire-prevention\\app\\src\\main\\res\\drawable\\top.png"
     },
     {
+        "merged": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\run.PNG",
+        "source": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\src\\main\\res\\drawable\\run.PNG"
+    },
+    {
         "merged": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_borderless_material.xml",
         "source": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_btn_borderless_material.xml"
     },
@@ -140,12 +144,12 @@
         "source": "D:\\Company\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_spinner_textfield_background_material.xml"
     },
     {
-        "merged": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fire.png",
-        "source": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\src\\main\\res\\drawable\\fire.png"
-    },
-    {
         "merged": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_colored_material.xml",
         "source": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\fire.png",
+        "source": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\src\\main\\res\\drawable\\fire.png"
     },
     {
         "merged": "D:\\Company\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_indicator_material.xml",
@@ -212,6 +216,10 @@
         "source": "D:\\Company\\Fire alarm\\fire-prevention\\app\\src\\main\\res\\drawable\\certification_image.png"
     },
     {
+        "merged": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\run2.PNG",
+        "source": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\src\\main\\res\\drawable\\run2.PNG"
+    },
+    {
         "merged": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_holo_dark.xml",
         "source": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_list_selector_holo_dark.xml"
     },
@@ -258,6 +266,10 @@
     {
         "merged": "D:\\Company\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\safe.png",
         "source": "D:\\Company\\Fire alarm\\fire-prevention\\app\\src\\main\\res\\drawable\\safe.png"
+    },
+    {
+        "merged": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\run3.PNG",
+        "source": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\src\\main\\res\\drawable\\run3.PNG"
     },
     {
         "merged": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_light.xml",

@@ -6,12 +6,14 @@ package com.codezero.fireprevention.activity;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -20,6 +22,7 @@ import android.widget.Toast;
 import com.codezero.fireprevention.R;
 import com.codezero.fireprevention.activity.listview.Item;
 import com.codezero.fireprevention.activity.listview.ListViewAdapter;
+import com.codezero.fireprevention.community.network.getSensorData;
 import com.codezero.fireprevention.database.DBConfig;
 import com.codezero.fireprevention.database.DBHelper;
 
@@ -62,15 +65,37 @@ public class ManagerActivity extends AppCompatActivity {
         productList.setAdapter(listviewAdapter);
 
         productList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id){
                 Item mData = listviewAdapter.items.get(position);
-                Toast.makeText(getApplicationContext(), mData.getName(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), mData.getName() + " 설정 변경", Toast.LENGTH_SHORT).show();
+                CheckBox state = (CheckBox)v.findViewById(R.id.ProductState);
+                mData.setState(!mData.getState());
+                state.setChecked(mData.getState());
+                setState(mData.getName(), mData.getState());
             }
         });
     }
 
+    private void setState(String name, boolean state){
+        Log.i(TAG, name + ", State : " + state);
+        int key = 0;
+        db = database.getReadableDatabase();
+        Cursor c = db.query(DBConfig.TABLE_NAME, null, null, null, null, null, null);
+        while(c.moveToNext()){
+            if(c.getString(c.getColumnIndex("name")).equals(name)) {
+                key = c.getInt(c.getColumnIndex("productKey"));
+                break;
+            }
+        }
+        db.close();
+        db = database.getWritableDatabase();
+        db.execSQL("update " + DBConfig.TABLE_NAME + " set flag = "
+                + (state ? 1 : 0) + " where productKey = " + key + ";");
+        db.close();
+        new getSensorData(getApplicationContext()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        numberText.setText("감지 중 : " + getNumber());
+    }
     private void setToolbar(){
         if(toolbar != null){
             setSupportActionBar(toolbar);

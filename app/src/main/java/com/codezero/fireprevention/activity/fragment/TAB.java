@@ -36,7 +36,7 @@ public class TAB extends Fragment {
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "출저 : 서울소방재난본부 홈페이지", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "출처 : 서울소방재난본부 홈페이지", Toast.LENGTH_SHORT).show();
             }
         });
         return view;

@@ -3695,7 +3695,14 @@
                     "endOffset": 43060
                 },
                 "from": {
-                    "file": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\src\\main\\res\\values\\strings.xml"
+                    "file": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 884,
+                        "endColumn": 60,
+                        "endOffset": 940
+                    }
                 }
             },
             {
@@ -3842,15 +3849,7 @@
                     "endOffset": 44625
                 },
                 "from": {
-                    "file": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\src\\main\\res\\values\\styles.xml",
-                    "position": {
-                        "startLine": 9,
-                        "startColumn": 4,
-                        "startOffset": 387,
-                        "endLine": 12,
-                        "endColumn": 12,
-                        "endOffset": 534
-                    }
+                    "file": "D:\\Company\\Code Zero\\Fire alarm\\fire-prevention\\app\\src\\main\\res\\values\\styles.xml"
                 }
             },
             {

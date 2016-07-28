@@ -74,7 +74,7 @@
             <ListView
                 android:layout_marginTop="40dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="360dp"
                 android:layout_below="@id/statusImage"
                 android:id="@+id/productList" />
 

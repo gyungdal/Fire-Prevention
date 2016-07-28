@@ -41,7 +41,17 @@ public class RunWhenFireActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
     }
+    public boolean onOptionsItemSelected(android.view.MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
 
+        }
+
+        return super.onOptionsItemSelected(item);
+
+    };
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());

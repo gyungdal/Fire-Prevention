@@ -3,6 +3,7 @@ package com.codezero.fireprevention.activity.listview;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,8 +12,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.codezero.fireprevention.R;
+import com.codezero.fireprevention.community.network.getSensorData;
 import com.codezero.fireprevention.database.DBConfig;
 import com.codezero.fireprevention.database.DBHelper;
 
@@ -24,6 +27,8 @@ import java.util.ArrayList;
 public class ListViewAdapter extends BaseAdapter {
     private Context context = null;
     public ArrayList<Item> items = new ArrayList<Item>();
+    private DBHelper database;
+    private SQLiteDatabase db;
 
     public ListViewAdapter(Context context) {
         super();
@@ -59,7 +64,13 @@ public class ListViewAdapter extends BaseAdapter {
 
             holder.name = (TextView) convertView.findViewById(R.id.ProductName);
             holder.state = (CheckBox) convertView.findViewById(R.id.ProductState);
-
+            final String name = holder.name.getText().toString();
+            holder.state.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Delete(name);
+                }
+            });
             convertView.setTag(holder);
         }else{
             holder = (ViewHolder) convertView.getTag();
@@ -71,4 +82,10 @@ public class ListViewAdapter extends BaseAdapter {
         return convertView;
     }
 
+    private void Delete(String name){
+        database = new DBHelper(context, DBConfig.DB_NAME, null, 2);
+        db = database.getWritableDatabase();
+        db.execSQL("delete from " + DBConfig.TABLE_NAME + " where name = " + name + ";");
+        db.close();
+    }
 }

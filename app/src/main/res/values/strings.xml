@@ -19,7 +19,7 @@
     <string name="caution">알림</string>
     <string name="status">상태</string>
     <string name="safe">지금은 안전합니다.\n\n아이콘을 터치하여 자세하게 확인할 수 있습니다.</string>
-    <string name="unsafe">화재가 감지되었습니다\n버튼을 눌러 확인하세요</string>
+    <string name="unsafe">이상이 감지되었습니다\n버튼을 눌러 확인하세요</string>
     <string name="DAUM_MAP_KEY">952d7bd3b757ddb384711627fbd29538</string>
 
 

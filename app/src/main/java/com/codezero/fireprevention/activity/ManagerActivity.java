@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
@@ -76,6 +78,30 @@ public class ManagerActivity extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add(0, 1, Menu.NONE, "전체 알람 종료");
+        return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case 1:
+                setAllState();
+                break;
+
+            default:
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     private void setState(String name, boolean state){
         Log.i(TAG, name + ", State : " + state);
@@ -96,6 +122,17 @@ public class ManagerActivity extends AppCompatActivity {
         new getSensorData(getApplicationContext()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         numberText.setText("감지 중 : " + getNumber());
     }
+
+
+    private void setAllState(){
+        db = database.getWritableDatabase();
+        db.execSQL("update " + DBConfig.TABLE_NAME + " set flag = 0");
+        db.close();
+        new getSensorData(getApplicationContext()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        numberText.setText("감지 중 : " + getNumber());
+        ManagerActivity.this.finish();
+    }
+
     private void setToolbar(){
         if(toolbar != null){
             setSupportActionBar(toolbar);

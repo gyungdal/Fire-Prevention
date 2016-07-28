@@ -5,6 +5,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Vibrator;
 
 import com.codezero.fireprevention.activity.UnSafeActivity;
 
@@ -31,7 +32,7 @@ public class NoticeManager {
         mainIntent.putExtra("lat", lat);
         mainIntent.putExtra("lng", lng);
         PendingIntent pendingIntent =
-                PendingIntent.getActivity(context, i++, mainIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                PendingIntent.getActivity(context, (i + (int)lat), mainIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         Notification.Builder builder = new Notification.Builder(context)
                 .setSmallIcon(android.R.drawable.ic_dialog_alert)
                 .setTicker("화재센서 알림")
@@ -40,6 +41,6 @@ public class NoticeManager {
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true);
         Notification notification = builder.build();
-        notificationManager.notify(i, notification);
+        notificationManager.notify((i + (int)lat), notification);
     }
 }

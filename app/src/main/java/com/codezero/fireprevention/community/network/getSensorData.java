@@ -32,11 +32,18 @@ public class getSensorData extends AsyncTask<Void, Void, Void>{
     private static final int GET_ARDUINO_DATA = 1;
     private static final int GET_ANDROID_DATA = 2;
     private static final int GET_NULL = 3;
+    private static final int FIRE_SMOKE_TEMP = 7;
+    private static final int FIRE_SMOKE = 6;
+    private static final int FIRE_TEMP = 5;
+    private static final int FIRE = 4;
+    private static final int SMOKE_TEMP = 3;
+    private static final int SMOKE = 2;
+    private static final int TEMP = 1;
     private boolean isSafe;
     private static Context context;
     private DBHelper database;
     private int getType;
-    private static final long TIME = 1000 * 60;
+    private static final long TIME = 1000;
     public getSensorData(Context context){
         this.context = context;
         database = new DBHelper(context, DBConfig.DB_NAME, null, 2);
@@ -99,14 +106,42 @@ public class getSensorData extends AsyncTask<Void, Void, Void>{
                         alert(sensor + "번 센서", "아무런 설정이 되어있지 않은 센서");
                         break;
                     default: {
-                        if (Double.valueOf(fire) > 750 || Double.valueOf(smoke) > 1
-                                || Double.valueOf(temp) > 60) {
+                        int result = BoolToByte((Double.valueOf(fire) > 75)) << 2;
+                        result += BoolToByte((Double.valueOf(smoke) > 1)) << 1;
+                        result += BoolToByte((Double.valueOf(temp) > 60));
+                        if (result != 0) {
                             DBConfig.NotSafeNumber++;
                             isSafe = DBConfig.isSafe = false;
                             NoticeManager noticeManager =
                                     new NoticeManager(context, getName(sensor)
                                             , Double.valueOf(lat), Double.valueOf(lng));
-                            noticeManager.show(sensor + "번 센서", "경보");
+                            switch(result){
+                                case FIRE_SMOKE_TEMP :
+                                    noticeManager.show(sensor + "번 센서", "화재가 의심 됩니다.");
+                                    break;
+                                case FIRE_SMOKE :
+                                    noticeManager.show(sensor + "번 센서", "연기가 나고 화재가 감지 되었습니다.");
+                                    break;
+                                case FIRE_TEMP :
+                                    noticeManager.show(sensor + "번 센서", "온도가 올라가고 화재가 감지 되었습니다.");
+                                    break;
+                                case FIRE :
+                                    noticeManager.show(sensor + "번 센서", "화재가 감지 되었습니다.");
+                                    break;
+                                case SMOKE_TEMP :
+                                    noticeManager.show(sensor + "번 센서", "연기와 온도가 올라갔습니다.");
+                                    break;
+                                case SMOKE :
+                                    noticeManager.show(sensor + "번 센서", "연기가 납니다.");
+                                    break;
+                                case TEMP :
+                                    noticeManager.show(sensor + "번 센서", "온도가 올라갔습니다.");
+                                    break;
+                                default:
+                                    noticeManager.show(sensor + "번 센서", "설정되지 않은 값");
+                                    Log.i("" + sensor, "" + result);
+                                    break;
+                            }
                         }
                         Log.i(sensor + "번 센서", "FINE");
                         break;
@@ -122,6 +157,9 @@ public class getSensorData extends AsyncTask<Void, Void, Void>{
         return null;
     }
 
+    private byte BoolToByte(boolean b){
+        return (b ? (byte)1 : (byte)0);
+    }
     private List<Integer> getAllProductKey() {
         List<Integer> result = new ArrayList<>();
         SQLiteDatabase db = database.getReadableDatabase();

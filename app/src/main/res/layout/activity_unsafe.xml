@@ -44,83 +44,6 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp" />
 
-        <LinearLayout
-            android:id="@+id/statusIcon"
-            android:layout_below="@+id/map"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="30dp">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="0.3"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
-                <ImageView
-                    android:layout_width="@dimen/nav_circle"
-                    android:layout_height="@dimen/nav_circle"
-                    android:background="@android:color/transparent"
-                    android:src="@drawable/red_circle"
-                    android:id="@+id/navFireImage"/>
-
-                <TextView
-                    android:layout_marginTop="@dimen/nav_text_top"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/nav_fire"
-                    android:textStyle="bold|normal"
-                    android:textColor="#000" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="0.3"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
-                <ImageView
-                    android:layout_width="@dimen/nav_circle"
-                    android:layout_height="@dimen/nav_circle"
-                    android:background="@android:color/transparent"
-                    android:src="@drawable/green_circle"
-                    android:id="@+id/navSmokeImage"/>
-
-                <TextView
-                    android:layout_marginTop="@dimen/nav_text_top"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/nav_smoke"
-                    android:textStyle="bold|normal"
-                    android:textColor="#000" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="0.3"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
-                <ImageView
-                    android:layout_width="@dimen/nav_circle"
-                    android:layout_height="@dimen/nav_circle"
-                    android:background="@android:color/transparent"
-                    android:src="@drawable/gray_circle"
-                    android:id="@+id/navTempImage"/>
-
-                <TextView
-                    android:layout_marginTop="@dimen/nav_text_top"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/nav_temp"
-                    android:textStyle="bold|normal"
-                    android:textColor="#000" />
-            </LinearLayout>
-
-        </LinearLayout>
-
         <Button
             android:textColor="@android:color/white"
             android:textStyle="bold"
@@ -130,7 +53,7 @@
             android:layout_height="wrap_content"
             android:text="119 신고"
             android:id="@+id/unSafeButton"
-            android:layout_below="@id/statusIcon"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/map" />
     </RelativeLayout>
 </ScrollView>

@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.codezero.fireprevention.R;
@@ -42,6 +43,7 @@ public class UnSafeActivity extends AppCompatActivity implements
     private String address, name;
     private Toolbar toolbar;
     private Button unsafeButton;
+    private TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +51,7 @@ public class UnSafeActivity extends AppCompatActivity implements
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         setToolbar();
         unsafeButton = (Button)findViewById(R.id.unSafeButton);
+        textView = (TextView)findViewById(R.id.textView);
         Intent intent = getIntent();
         if(intent != null){
             lat = intent.getDoubleExtra("lat", -1);
@@ -59,6 +62,7 @@ public class UnSafeActivity extends AppCompatActivity implements
                 finish();
             }
         }
+        textView.setText(name + "센서에서" + getText(R.string.unsafe));
         MapView mapView = new MapView(this);
         mapView.setDaumMapApiKey(this.getString(R.string.DAUM_MAP_KEY));
         mapView.zoomIn(true);

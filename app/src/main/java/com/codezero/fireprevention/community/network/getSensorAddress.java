@@ -31,10 +31,11 @@ public class getSensorAddress extends AsyncTask<Double, Void, String> {
     protected String doInBackground(Double... params) {
         try {
             Document doc = Jsoup.connect(front + context.getString(R.string.DAUM_MAP_KEY)
-                    + lat + params[0] + lng + params[1] + input + context.getPackageName() + output)
+                    + lat + params[0] + lng + params[1] + input + "com.codezero.fireprevention")
                     .get();
             String fullData = doc.toString();
-            String data = fullData.substring(fullData.indexOf("fullName=\"")+ "fullName=\"".length());
+            Log.i("get Address", fullData);
+            String data = fullData.substring(fullData.indexOf("fullname=\"") + "fullname=\"".length());
             data = data.substring(0, data.indexOf("\""));
             return data;
         }catch(Exception e){

@@ -1,8 +1,10 @@
 package com.codezero.fireprevention.activity;
 
 import android.Manifest;
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -30,9 +32,11 @@ public class AddActivity extends AppCompatActivity {
     private Button bscan;
     private Button bsearch;
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimary));
         setContentView(R.layout.activity_add);
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         setToolbar();

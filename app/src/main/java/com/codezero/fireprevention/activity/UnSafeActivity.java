@@ -1,5 +1,6 @@
 package com.codezero.fireprevention.activity;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -8,7 +9,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
@@ -44,12 +47,15 @@ public class UnSafeActivity extends AppCompatActivity implements
     private Toolbar toolbar;
     private Button unsafeButton;
     private TextView textView;
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimary));
         setContentView(R.layout.activity_unsafe);
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         setToolbar();
+        Log.i(TAG, "Create activity unsafe");
         unsafeButton = (Button)findViewById(R.id.unSafeButton);
         textView = (TextView)findViewById(R.id.textView);
         Intent intent = getIntent();
@@ -198,11 +204,10 @@ public class UnSafeActivity extends AppCompatActivity implements
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.unSafeButton :
-                Intent sendIntent = new Intent(Intent.ACTION_VIEW);
-                sendIntent.putExtra("sms_body", address + "에서 도움을 요청합니다!!!"); // 보낼 문자
-                sendIntent.putExtra("address", "01074776900"); // 받는사람 번호
-                sendIntent.setType("vnd.android-dir/mms-sms");
-                startActivity(sendIntent);
+                Uri uri = Uri.parse("smsto:01074776900");
+                Intent it = new Intent(Intent.ACTION_SENDTO, uri);
+                it.putExtra("sms_body", address + "에서 도움을 요청합니다!!!");
+                startActivity(it);
                 break;
         }
     }

@@ -56,7 +56,7 @@ public class getSensorData extends AsyncTask<Void, Void, Void>{
         Log.i("Get Sensor Data Start", "YEAH");
         try {
             //온라인이 아닐경우 그냥 대기
-            while(isOnline()){
+            while(!isOnline()){
                 Thread.sleep(TIME);
             }
 
@@ -180,20 +180,19 @@ public class getSensorData extends AsyncTask<Void, Void, Void>{
         }
         return null;
     }
-
-    private boolean isOnline(){
-        Log.i("GET info", "Is Online???");
-        ConnectivityManager conMgr = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        if ( conMgr.getNetworkInfo(0).getState() == NetworkInfo.State.CONNECTED
-                || conMgr.getNetworkInfo(1).getState() == NetworkInfo.State.CONNECTING )
-            return true;
-        else if ( conMgr.getNetworkInfo(0).getState() == NetworkInfo.State.DISCONNECTED
-                || conMgr.getNetworkInfo(1).getState() == NetworkInfo.State.DISCONNECTED)
-            return false;
+    public Boolean isOnline() {
+        Log.i("Online???", "check");
+        try {
+            Process p1 = java.lang.Runtime.getRuntime().exec("ping -c 1 www.google.com");
+            int returnVal = p1.waitFor();
+            boolean reachable = (returnVal==0);
+            return reachable;
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         return false;
     }
-
     private void alert(String title, String text){
         Log.i("Fire Alert", title);
         Log.i("Fire Alert", text);

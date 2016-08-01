@@ -29,7 +29,7 @@ public class StartReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(final Context context, Intent intent) {
         Log.i(TAG, intent.getAction());
-        setup(context);
+        //setup(context);
         //test(context)
         new Thread(){
             @Override
@@ -57,7 +57,7 @@ public class StartReceiver extends BroadcastReceiver {
                 .setSmallIcon(android.R.drawable.stat_notify_sync)
                 .setTicker("Fire Prevention")
                 .setContentTitle("동기화 시작")
-                .setContentText("5분 간격으로 동기화 합니다.")
+                .setContentText("동기화를 시작 합니다.")
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true);
 
@@ -66,25 +66,4 @@ public class StartReceiver extends BroadcastReceiver {
 
     }
 
-    private void test(Context context){
-        NotificationManager notificationManager =
-                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        Intent mainIntent = new Intent(context, UnSafeActivity.class);
-        mainIntent.putExtra("name", "TEST");
-        mainIntent.putExtra("lat", 36.392024979576206);
-        mainIntent.putExtra("lng", 127.36304090241377);
-        PendingIntent pendingIntent =
-                PendingIntent.getActivity(context, 4, mainIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        Notification.Builder builder = new Notification.Builder(context)
-                .setSmallIcon(android.R.drawable.ic_dialog_alert)
-                .setTicker("Fire Prevention")
-                .setContentTitle("불이야!")
-                .setContentText("으아아아아ㅏㅇ")
-                .setContentIntent(pendingIntent)
-                .setAutoCancel(true);
-
-        Notification notification = builder.build();
-        notificationManager.notify(1, notification);
-
-    }
 }

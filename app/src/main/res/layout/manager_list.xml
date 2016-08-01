@@ -8,22 +8,29 @@
         android:layout_height="wrap_content"
         android:text="Name"
         android:id="@+id/ProductName"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
         android:textSize="20dp"
-        android:layout_margin="10dp"
         android:textColor="@android:color/black"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_alignTop="@+id/ProductState"
+        android:layout_toEndOf="@+id/ProductState" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:focusable="false"
         android:id="@+id/ProductState"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="10dp" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="알람   "
+        android:id="@+id/alarmSwitch"
         android:layout_alignBottom="@+id/ProductName"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

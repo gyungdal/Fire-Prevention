@@ -50,7 +50,7 @@
                 android:background="@drawable/test"
                 android:textColor="@android:color/black"
                 android:textSize="16dp"
-                android:text="화재경보기 등록"
+                android:text="제품 등록"
                 android:textStyle="bold"
                 android:onClick="click" />
             <View
@@ -64,7 +64,7 @@
                 android:background="@drawable/test"
                 android:textColor="@android:color/black"
                 android:textSize="16dp"
-                android:text="화재경보기 관리"
+                android:text="제품 관리"
                 android:textStyle="bold"
                 android:onClick="click" />
 

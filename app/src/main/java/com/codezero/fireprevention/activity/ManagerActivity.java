@@ -4,9 +4,11 @@ package com.codezero.fireprevention.activity;
  * Created by GyungDal on 2016-07-26.
  */
 
+import android.annotation.TargetApi;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -37,23 +39,22 @@ import java.util.Iterator;
 public class ManagerActivity extends AppCompatActivity {
     private static final String TAG = ManagerActivity.class.getName();
     private Toolbar toolbar;
-    private ImageView statusImage;
-    private TextView statusText, numberText;
+    private TextView numberText;
     private ListView productList;
     private DBHelper database;
     private SQLiteDatabase db;
     private ListViewAdapter listviewAdapter;
     private static final int ENABLE = 1;
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimary));
         setContentView(R.layout.activity_manager);
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         setToolbar();
         database = new DBHelper(ManagerActivity.this, DBConfig.DB_NAME, null, 2);
         productList = (ListView)findViewById(R.id.productList);
-        statusImage = (ImageView)findViewById(R.id.statusImage);
-        statusText = (TextView)findViewById(R.id.statusText);
         numberText = (TextView)findViewById(R.id.number);
         setStatus();
         listviewAdapter = new ListViewAdapter(this);
@@ -149,15 +150,7 @@ public class ManagerActivity extends AppCompatActivity {
     }
 
     private void setStatus(){
-        if(DBConfig.isSafe){
-            statusImage.setImageResource(R.drawable.safe);
-            statusText.setText("상태 : " + "안전");
-        }else{
-            statusImage.setImageResource(R.drawable.unsafe);
-            statusText.setText("상태 : " + "위험");
-        }
         numberText.setText("감지 중 : " + getNumber());
-
     }
 
     public int getNumber(){
@@ -206,6 +199,12 @@ public class ManagerActivity extends AppCompatActivity {
         }
         db.close();
         return result;
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        setStatus();
     }
 }
 

@@ -5,11 +5,13 @@ package com.codezero.fireprevention.activity;
  */
 
 import android.Manifest;
+import android.annotation.TargetApi;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -40,9 +42,11 @@ public class AddMapActivity extends AppCompatActivity {
     private Button productSet;
     private DBHelper database;
     private SQLiteDatabase db;
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimary));
         setContentView(R.layout.activity_add_map);
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         productLocate = (EditText)findViewById(R.id.productLocate);

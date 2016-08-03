@@ -11,6 +11,7 @@ public class Item {
         this.name = name;
         this.state = state;
     }
+
     public String getName() {
         return name;
     }

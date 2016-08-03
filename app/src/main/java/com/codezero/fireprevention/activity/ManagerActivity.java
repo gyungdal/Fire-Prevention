@@ -38,13 +38,18 @@ import java.util.Iterator;
  */
 public class ManagerActivity extends AppCompatActivity {
     private static final String TAG = ManagerActivity.class.getName();
+    private static final int ENABLE = 1;
+    private static final int ALL_DELETE = 1;
+    private static final int SELECT_DELETE = 2;
+    private static final int ALL_ALARM_STOP = 3;
+    private static final int SELECT_ALARM_STOP = 4;
+
     private Toolbar toolbar;
     private TextView numberText;
     private ListView productList;
     private DBHelper database;
     private SQLiteDatabase db;
     private ListViewAdapter listviewAdapter;
-    private static final int ENABLE = 1;
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,26 +67,17 @@ public class ManagerActivity extends AppCompatActivity {
         Iterator<String> itr = Data.keySet().iterator();
         while(itr.hasNext()) {
             String name = itr.next();
-            Boolean state = Data.get(name);
+            boolean state = Data.get(name);
             listviewAdapter.addItem(name, state);
         }
         productList.setAdapter(listviewAdapter);
-
-        productList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id){
-                Item mData = listviewAdapter.items.get(position);
-                Toast.makeText(getApplicationContext(), mData.getName() + " 설정 변경", Toast.LENGTH_SHORT).show();
-                CheckBox state = (CheckBox)v.findViewById(R.id.ProductState);
-                mData.setState(!mData.getState());
-                state.setChecked(mData.getState());
-                setState(mData.getName(), mData.getState());
-            }
-        });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add(0, 1, Menu.NONE, "전체 알람 종료");
+        menu.add(0, ALL_DELETE, Menu.NONE, "전체 제품 삭제");
+        menu.add(0, SELECT_DELETE, Menu.NONE, "선택 제품 삭제");
+        menu.add(0, ALL_ALARM_STOP, Menu.NONE, "전체 알람 OFF");
+        menu.add(0, SELECT_ALARM_STOP, Menu.NONE, "선택 알람 OFF");
         return true;
     }
 
@@ -93,11 +89,23 @@ public class ManagerActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case 1:
-                setAllState();
+            case ALL_DELETE :
+                AllDelete();
+                Toast.makeText(getApplicationContext(), "전체 삭제 완료", Toast.LENGTH_SHORT).show();
                 break;
 
-            default:
+            case SELECT_DELETE :
+                break;
+
+            case ALL_ALARM_STOP :
+                setAllState();
+                Toast.makeText(getApplicationContext(), "전체 알람 OFF 완료", Toast.LENGTH_SHORT).show();
+                break;
+
+            case SELECT_ALARM_STOP :
+                break;
+
+            default :
                 break;
         }
 
@@ -199,6 +207,12 @@ public class ManagerActivity extends AppCompatActivity {
         }
         db.close();
         return result;
+    }
+
+    private void AllDelete(){
+        db = database.getWritableDatabase();
+        db.execSQL("delete from " + DBConfig.TABLE_NAME);
+        db.close();
     }
 
     @Override

@@ -2328,6 +2328,7 @@ containing a value of this type.
     public static final class id {
         public static final int ProductName=0x7f0d009a;
         public static final int ProductState=0x7f0d009b;
+        public static final int ProductSwitch=0x7f0d009c;
         public static final int QRCodeScan=0x7f0d0077;
         public static final int SearchText=0x7f0d0075;
         public static final int action0=0x7f0d009f;
@@ -2347,7 +2348,6 @@ containing a value of this type.
         public static final int action_mode_close_button=0x7f0d0047;
         public static final int action_settings=0x7f0d00b7;
         public static final int activity_chooser_view_content=0x7f0d0048;
-        public static final int alarmSwitch=0x7f0d009c;
         public static final int alertTitle=0x7f0d0054;
         public static final int always=0x7f0d003e;
         public static final int beginning=0x7f0d003c;

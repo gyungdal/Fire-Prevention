@@ -1,6 +1,7 @@
 package com.codezero.fireprevention.activity.listview;
 
 import android.widget.CheckBox;
+import android.widget.Switch;
 import android.widget.TextView;
 
 /**
@@ -9,4 +10,5 @@ import android.widget.TextView;
 public class ViewHolder{
     public TextView name;
     public CheckBox state;
+    public Switch mSwitch;
 }

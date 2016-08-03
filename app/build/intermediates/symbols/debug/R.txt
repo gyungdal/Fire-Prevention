@@ -629,6 +629,7 @@ int drawable top 0x7f020067
 int drawable unsafe 0x7f020068
 int id ProductName 0x7f0d009a
 int id ProductState 0x7f0d009b
+int id ProductSwitch 0x7f0d009c
 int id QRCodeScan 0x7f0d0077
 int id SearchText 0x7f0d0075
 int id action0 0x7f0d009f
@@ -648,7 +649,6 @@ int id action_mode_bar_stub 0x7f0d0061
 int id action_mode_close_button 0x7f0d0047
 int id action_settings 0x7f0d00b7
 int id activity_chooser_view_content 0x7f0d0048
-int id alarmSwitch 0x7f0d009c
 int id alertTitle 0x7f0d0054
 int id always 0x7f0d003e
 int id beginning 0x7f0d003c

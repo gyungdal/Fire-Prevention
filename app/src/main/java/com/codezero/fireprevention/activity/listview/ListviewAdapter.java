@@ -5,12 +5,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SwitchCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,7 +41,7 @@ public class ListViewAdapter extends BaseAdapter {
         return items.size();
     }
 
-    public void addItem(String name, Boolean state){
+    public void addItem(String name, boolean state){
         Item addInfo = new Item(name, state);
         items.add(addInfo);
     }
@@ -64,11 +66,18 @@ public class ListViewAdapter extends BaseAdapter {
 
             holder.name = (TextView) convertView.findViewById(R.id.ProductName);
             holder.state = (CheckBox) convertView.findViewById(R.id.ProductState);
+            holder.mSwitch = (Switch) convertView.findViewById(R.id.ProductSwitch);
             final String name = holder.name.getText().toString();
-            holder.state.setOnClickListener(new View.OnClickListener() {
+            /*holder.state.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Delete(name);
+                }
+            });*/
+            holder.mSwitch.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SetAlarm(name);
                 }
             });
             convertView.setTag(holder);
@@ -76,9 +85,9 @@ public class ListViewAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         Item data = items.get(position);
-
         holder.name.setText(data.getName());
-        holder.state.setChecked(data.getState());
+        holder.state.setChecked(false);
+        holder.mSwitch.setChecked(data.getState());
         return convertView;
     }
 
@@ -88,4 +97,22 @@ public class ListViewAdapter extends BaseAdapter {
         db.execSQL("delete from " + DBConfig.TABLE_NAME + " where name = " + name + ";");
         db.close();
     }
+
+    private void SetAlarm(String name){
+        boolean state = true;
+        db = database.getReadableDatabase();
+        Cursor c = db.query(DBConfig.TABLE_NAME, null, null, null, null, null, null);
+        while(c.moveToNext()){
+            if(c.getString(c.getColumnIndex("name")).equals(name)) {
+                state = (c.getInt(c.getColumnIndex("flag")) == 1 ? false : true);
+                break;
+            }
+        }
+        db.close();
+        db = database.getWritableDatabase();
+        db.execSQL("update " + DBConfig.TABLE_NAME + " set flag = "
+                + (state ? 1 : 0) + " where name = " + name + ";");
+        db.close();
+    }
+
 }

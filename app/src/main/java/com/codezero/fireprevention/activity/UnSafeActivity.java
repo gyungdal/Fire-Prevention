@@ -8,6 +8,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -30,6 +32,8 @@ import android.widget.Toast;
 
 import com.codezero.fireprevention.R;
 import com.codezero.fireprevention.community.network.getSensorAddress;
+import com.codezero.fireprevention.database.DBConfig;
+import com.codezero.fireprevention.database.DBHelper;
 
 import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;
@@ -47,12 +51,16 @@ public class UnSafeActivity extends AppCompatActivity implements
     private Toolbar toolbar;
     private Button unsafeButton;
     private TextView textView;
+    private DBHelper database;
+    private SQLiteDatabase db;
+
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimary));
         setContentView(R.layout.activity_unsafe);
+        database = new DBHelper(UnSafeActivity.this, DBConfig.DB_NAME, null, 2);
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         setToolbar();
         Log.i(TAG, "Create activity unsafe");
@@ -68,7 +76,7 @@ public class UnSafeActivity extends AppCompatActivity implements
                 finish();
             }
         }
-        textView.setText(name + "센서에서" + getText(R.string.unsafe));
+        textView.setText(getName(Integer.valueOf(name)) + "센서에서" + getText(R.string.unsafe));
         MapView mapView = new MapView(this);
         mapView.setDaumMapApiKey(this.getString(R.string.DAUM_MAP_KEY));
         mapView.zoomIn(true);
@@ -103,6 +111,21 @@ public class UnSafeActivity extends AppCompatActivity implements
                 return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    private String getName(int get){
+        db = database.getReadableDatabase();
+        Cursor c = db.query(DBConfig.TABLE_NAME, null, null, null, null, null, null);
+        while(c.moveToNext()){
+            int key = c.getInt(c.getColumnIndex("productKey"));
+            String name = c.getString(c.getColumnIndex("name"));
+            if(key == get) {
+                db.close();
+                return name;
+            }
+        }
+        db.close();
+        return null;
     }
 
     @Override

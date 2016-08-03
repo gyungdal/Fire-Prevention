@@ -31,9 +31,6 @@ import com.codezero.fireprevention.community.network.setSensorData;
 import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
 
-/**
- * Created by GyungDal on 2016-07-05.
- */
 public class AddMapActivity extends AppCompatActivity {
     private static final String TAG = AddActivity.class.getName();
     private Toolbar toolbar;
@@ -64,6 +61,7 @@ public class AddMapActivity extends AppCompatActivity {
                 finish();
             }
         }
+
         productSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

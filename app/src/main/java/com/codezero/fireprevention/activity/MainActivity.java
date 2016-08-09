@@ -1,11 +1,15 @@
 package com.codezero.fireprevention.activity;
 
+import android.Manifest;
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -27,6 +31,25 @@ public class MainActivity extends AppCompatActivity
     private ImageView imageView;
     private TextView textView, status;
 
+    private void getPermission(){
+        final String[] permissions = {
+                Manifest.permission.CAMERA,
+                Manifest.permission.SEND_SMS,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.ACCESS_FINE_LOCATION
+        };
+        for(int i = 0;i<4;i++) {
+            if (ContextCompat.checkSelfPermission(MainActivity.this,
+                    permissions[i])
+                    != PackageManager.PERMISSION_GRANTED) {
+            if (!ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
+                        permissions[i]))
+                    ActivityCompat.requestPermissions(MainActivity.this,
+                            new String[]{permissions[i]},
+                            i);
+            }
+        }
+    }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -48,6 +71,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         new getSensorData(getApplicationContext()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         setStatus();
+        getPermission();
     }
 
     @Override
@@ -55,6 +79,7 @@ public class MainActivity extends AppCompatActivity
         super.onResume();
         setStatus();
     }
+
     public TextView getStatusTextView(){
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);

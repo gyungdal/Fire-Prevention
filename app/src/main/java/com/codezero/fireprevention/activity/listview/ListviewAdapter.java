@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,18 +36,20 @@ public class ListViewAdapter extends BaseAdapter {
     public ListViewAdapter(Context context) {
         super();
         this.context = context;
+        database = new DBHelper(context, DBConfig.DB_NAME, null, 2);
     }
+
     @Override
     public int getCount() {
         return items.size();
     }
 
     public void addItem(String name, boolean state){
-        Item addInfo = new Item(name, state);
+        Item addInfo = new Item(name, state, false);
         items.add(addInfo);
     }
     @Override
-    public Object getItem(int position) {
+    public Item getItem(int position) {
         return items.get(position);
     }
 
@@ -57,7 +60,7 @@ public class ListViewAdapter extends BaseAdapter {
 
 
     @Override
-    public View getView(int position,View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if(convertView == null){
             holder = new ViewHolder();
@@ -67,13 +70,20 @@ public class ListViewAdapter extends BaseAdapter {
             holder.name = (TextView) convertView.findViewById(R.id.ProductName);
             holder.state = (CheckBox) convertView.findViewById(R.id.ProductState);
             holder.mSwitch = (Switch) convertView.findViewById(R.id.ProductSwitch);
+            holder.mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    items.get(position).setState(isChecked);
+                    SetAlarm(items.get(position).getName());
+                }
+            });
             final String name = holder.name.getText().toString();
-            /*holder.state.setOnClickListener(new View.OnClickListener() {
+            holder.state.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Delete(name);
+                    items.get(position).setIsdel(!items.get(position).getIsdel());
                 }
-            });*/
+            });
             holder.mSwitch.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -91,27 +101,22 @@ public class ListViewAdapter extends BaseAdapter {
         return convertView;
     }
 
-    private void Delete(String name){
-        database = new DBHelper(context, DBConfig.DB_NAME, null, 2);
-        db = database.getWritableDatabase();
-        db.execSQL("delete from " + DBConfig.TABLE_NAME + " where name = " + name + ";");
-        db.close();
-    }
-
     private void SetAlarm(String name){
         boolean state = true;
         db = database.getReadableDatabase();
         Cursor c = db.query(DBConfig.TABLE_NAME, null, null, null, null, null, null);
         while(c.moveToNext()){
             if(c.getString(c.getColumnIndex("name")).equals(name)) {
-                state = (c.getInt(c.getColumnIndex("flag")) == 1 ? false : true);
+                state = (c.getInt(c.getColumnIndex("flag")) == 1 ? true : false);
                 break;
             }
         }
+        Log.i("State Change", "That name is " + name);
+        Log.i("State Change", "That state is " + state);
         db.close();
         db = database.getWritableDatabase();
         db.execSQL("update " + DBConfig.TABLE_NAME + " set flag = "
-                + (state ? 1 : 0) + " where name = " + name + ";");
+                + (state ? 1 : 0) + " where name = \"" + name + "\";");
         db.close();
     }
 

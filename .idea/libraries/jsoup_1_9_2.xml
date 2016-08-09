@@ -5,7 +5,7 @@
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jsoup/jsoup/1.9.2/97441f4a0f6bb4c2d9f1e19321f4a45c9ffd0e2c/jsoup-1.9.2-sources.jar!/" />
+      <root url="jar://M:/Tool/Develop/Android/Gradle/caches/modules-2/files-2.1/org.jsoup/jsoup/1.9.2/97441f4a0f6bb4c2d9f1e19321f4a45c9ffd0e2c/jsoup-1.9.2-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

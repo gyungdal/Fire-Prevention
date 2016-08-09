@@ -1,2 +1,0 @@
-CHANGED,D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\transforms\instantRun\debug\folders\1\5\main\com\codezero\fireprevention\activity\ManagerActivity.class
-CHANGED,D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\transforms\instantRun\debug\folders\1\5\main\com\codezero\fireprevention\activity\ManagerActivity$1.class

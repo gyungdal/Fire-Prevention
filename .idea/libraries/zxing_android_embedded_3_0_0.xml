@@ -6,7 +6,7 @@
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.journeyapps/zxing-android-embedded/3.0.0/f7e4938a104542596a37defa7d4d8cdeb3699216/zxing-android-embedded-3.0.0-sources.jar!/" />
+      <root url="jar://M:/Tool/Develop/Android/Gradle/caches/modules-2/files-2.1/com.journeyapps/zxing-android-embedded/3.0.0/f7e4938a104542596a37defa7d4d8cdeb3699216/zxing-android-embedded-3.0.0-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

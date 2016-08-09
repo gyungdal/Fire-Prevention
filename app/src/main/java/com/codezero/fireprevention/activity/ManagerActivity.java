@@ -42,7 +42,6 @@ public class ManagerActivity extends AppCompatActivity {
     private static final int ALL_DELETE = 1;
     private static final int SELECT_DELETE = 2;
     private static final int ALL_ALARM_STOP = 3;
-    private static final int SELECT_ALARM_STOP = 4;
 
     private Toolbar toolbar;
     private TextView numberText;
@@ -72,12 +71,12 @@ public class ManagerActivity extends AppCompatActivity {
         }
         productList.setAdapter(listviewAdapter);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.add(0, ALL_DELETE, Menu.NONE, "전체 제품 삭제");
         menu.add(0, SELECT_DELETE, Menu.NONE, "선택 제품 삭제");
         menu.add(0, ALL_ALARM_STOP, Menu.NONE, "전체 알람 OFF");
-        menu.add(0, SELECT_ALARM_STOP, Menu.NONE, "선택 알람 OFF");
         return true;
     }
 
@@ -92,17 +91,19 @@ public class ManagerActivity extends AppCompatActivity {
             case ALL_DELETE :
                 AllDelete();
                 Toast.makeText(getApplicationContext(), "전체 삭제 완료", Toast.LENGTH_SHORT).show();
+                finish();
                 break;
 
             case SELECT_DELETE :
+                selectDelete();
+                Toast.makeText(getApplicationContext(), "선택 삭제 완료", Toast.LENGTH_SHORT).show();
+                finish();
                 break;
 
             case ALL_ALARM_STOP :
                 setAllState();
                 Toast.makeText(getApplicationContext(), "전체 알람 OFF 완료", Toast.LENGTH_SHORT).show();
-                break;
-
-            case SELECT_ALARM_STOP :
+                finish();
                 break;
 
             default :
@@ -110,6 +111,13 @@ public class ManagerActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void selectDelete(){
+        for(int i = 0;i < listviewAdapter.getCount();i++){
+            if(listviewAdapter.getItem(i).getIsdel())
+                delete(listviewAdapter.getItem(i).getName());
+        }
     }
 
     private void setState(String name, boolean state){
@@ -207,6 +215,13 @@ public class ManagerActivity extends AppCompatActivity {
         }
         db.close();
         return result;
+    }
+
+
+    private void delete(String name){
+        db = database.getWritableDatabase();
+        db.execSQL("delete from " + DBConfig.TABLE_NAME + " where name = \"" + name + "\";");
+        db.close();
     }
 
     private void AllDelete(){

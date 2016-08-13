@@ -24,7 +24,7 @@ import java.util.TimerTask;
 
 public class StartReceiver extends BroadcastReceiver {
     private static final String TAG = "Background Work";
-    private static final long TIME = 1000 * 3;
+    private static final long TIME = 500;
     private getSensorData get;
     @Override
     public void onReceive(final Context context, Intent intent) {
@@ -44,7 +44,7 @@ public class StartReceiver extends BroadcastReceiver {
                     }
                 }
             }
-        }.run();
+        }.start ();
     }
 
     private void setup(Context context){

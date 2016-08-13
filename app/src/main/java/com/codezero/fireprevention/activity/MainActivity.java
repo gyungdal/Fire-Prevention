@@ -141,6 +141,7 @@ public class MainActivity extends AppCompatActivity
                 break;*/
         }
     }
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {

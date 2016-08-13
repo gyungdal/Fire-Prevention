@@ -117,25 +117,32 @@ public class getSensorData extends AsyncTask<Void, Void, Void>{
                                             , Double.valueOf(lat), Double.valueOf(lng));
                             switch(result){
                                 case FIRE_SMOKE_TEMP :
-                                    noticeManager.show(sensor + "번 센서", "화재가 의심 됩니다.");
+                                    //noticeManager.show(sensor + "번 센서", "화재가 의심 됩니다.");
+                                    noticeManager.show(sensor + "번 센서", "화재, 연기, 온도 센서 작동");
                                     break;
                                 case FIRE_SMOKE :
-                                    noticeManager.show(sensor + "번 센서", "연기가 나고 화재가 감지 되었습니다.");
+                                    //noticeManager.show(sensor + "번 센서", "연기가 나고 화재가 감지 되었습니다.");
+                                    noticeManager.show(sensor + "번 센서", "화재, 연기 센서 작동");
                                     break;
                                 case FIRE_TEMP :
-                                    noticeManager.show(sensor + "번 센서", "온도가 올라가고 화재가 감지 되었습니다.");
+                                    //noticeManager.show(sensor + "번 센서", "온도가 올라가고 화재가 감지 되었습니다.");
+                                    noticeManager.show(sensor + "번 센서", "화재, 온도 센서 작동");
                                     break;
                                 case FIRE :
-                                    noticeManager.show(sensor + "번 센서", "화재가 감지 되었습니다.");
+                                    //noticeManager.show(sensor + "번 센서", "화재가 감지 되었습니다.");
+                                    noticeManager.show(sensor + "번 센서", "화재 센서 작동");
                                     break;
                                 case SMOKE_TEMP :
-                                    noticeManager.show(sensor + "번 센서", "연기와 온도가 올라갔습니다.");
+                                    //noticeManager.show(sensor + "번 센서", "연기와 온도가 올라갔습니다.");
+                                    noticeManager.show(sensor + "번 센서", "연기, 온도 센서 작동");
                                     break;
                                 case SMOKE :
-                                    noticeManager.show(sensor + "번 센서", "연기가 납니다.");
+                                    //noticeManager.show(sensor + "번 센서", "연기가 납니다.");
+                                    noticeManager.show(sensor + "번 센서", "연기 센서 작동");
                                     break;
                                 case TEMP :
-                                    noticeManager.show(sensor + "번 센서", "온도가 올라갔습니다.");
+                                    //noticeManager.show(sensor + "번 센서", "온도가 올라갔습니다.");
+                                    noticeManager.show(sensor + "번 센서", "온도 센서 작동");
                                     break;
                                 default:
                                     noticeManager.show(sensor + "번 센서", "설정되지 않은 값");

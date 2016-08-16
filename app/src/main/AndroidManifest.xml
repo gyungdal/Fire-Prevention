@@ -20,9 +20,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
 
-            <receiver android:name=".background.StartReceiver"
+        <!-- Background receiver service -->
+        <service android:name=".background.ReceiveService">
+            <intent-filter>
+                <action android:name="com.codezero.fireprevention.background"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </service>
+
+        <!-- Boot complete receiver -->
+        <receiver android:name=".background.StartReceiver"
             android:enabled="true"
-            android:exported="false"
+            android:exported="true"
             android:label="StartReceiver">
             <intent-filter android:priority="9999">
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

@@ -76,7 +76,7 @@ public class UnSafeActivity extends AppCompatActivity implements
                 finish();
             }
         }
-        textView.setText(getName(Integer.valueOf(name)) + "센서에서" + getText(R.string.unsafe));
+        textView.setText(name + "센서에서" + getText(R.string.unsafe));
         MapView mapView = new MapView(this);
         mapView.setDaumMapApiKey(this.getString(R.string.DAUM_MAP_KEY));
         mapView.zoomIn(true);

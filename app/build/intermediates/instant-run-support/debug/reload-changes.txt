@@ -1,2 +1,3 @@
+CHANGED,D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\codezero\fireprevention\activity\MainActivity$1$override.class
 CHANGED,D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\android\tools\fd\runtime\AppPatchesLoaderImpl.class
-CHANGED,D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\codezero\fireprevention\activity\ManagerActivity$override.class
+CHANGED,D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\codezero\fireprevention\activity\MainActivity$override.class

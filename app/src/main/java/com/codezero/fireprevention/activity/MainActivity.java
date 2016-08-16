@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         status = getStatusTextView();
         imageView = (ImageView)findViewById(R.id.statusImage);
         textView = (TextView)findViewById(R.id.statusText);
@@ -72,6 +73,13 @@ public class MainActivity extends AppCompatActivity
         new getSensorData(getApplicationContext()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         setStatus();
         getPermission();
+        //startReceiver();
+    }
+
+    private void startReceiver(){
+        Intent i = new Intent("com.codezero.fireprevention.background");
+        i.setPackage(getPackageName());
+        startService(i);
     }
 
     @Override

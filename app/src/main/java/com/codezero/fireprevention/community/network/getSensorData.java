@@ -7,8 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -26,7 +24,7 @@ import java.util.List;
 /**
  * Created by GyungDal on 2016-07-20.
  */
-public class getSensorData extends AsyncTask<Void, Void, Void>{
+public class getSensorData extends AsyncTask<Void, Void, Void> {
     private static final String SERVER_URL = "http://59.26.68.181:8080/getSensorInfo.jsp?key=";
     private static final int GET_ALL_DATA = 0;
     private static final int GET_ARDUINO_DATA = 1;
@@ -56,12 +54,12 @@ public class getSensorData extends AsyncTask<Void, Void, Void>{
         Log.i("Get Sensor Data Start", "YEAH");
         try {
             //온라인이 아닐경우 그냥 대기
-            while(!isOnline()){
+            while (!isOnline()) {
                 Thread.sleep(TIME);
             }
 
             List<Integer> sensors = getAllProductKey();
-            for(int sensor : sensors) {
+            for (int sensor : sensors) {
                 getType = GET_ALL_DATA;
                 Document doc = Jsoup.connect(SERVER_URL + sensor)
                         .get();
@@ -115,32 +113,32 @@ public class getSensorData extends AsyncTask<Void, Void, Void>{
                             NoticeManager noticeManager =
                                     new NoticeManager(context, getName(sensor)
                                             , Double.valueOf(lat), Double.valueOf(lng));
-                            switch(result){
-                                case FIRE_SMOKE_TEMP :
+                            switch (result) {
+                                case FIRE_SMOKE_TEMP:
                                     //noticeManager.show(sensor + "번 센서", "화재가 의심 됩니다.");
                                     noticeManager.show(sensor + "번 센서", "화재, 연기, 온도 센서 작동");
                                     break;
-                                case FIRE_SMOKE :
+                                case FIRE_SMOKE:
                                     //noticeManager.show(sensor + "번 센서", "연기가 나고 화재가 감지 되었습니다.");
                                     noticeManager.show(sensor + "번 센서", "화재, 연기 센서 작동");
                                     break;
-                                case FIRE_TEMP :
+                                case FIRE_TEMP:
                                     //noticeManager.show(sensor + "번 센서", "온도가 올라가고 화재가 감지 되었습니다.");
                                     noticeManager.show(sensor + "번 센서", "화재, 온도 센서 작동");
                                     break;
-                                case FIRE :
+                                case FIRE:
                                     //noticeManager.show(sensor + "번 센서", "화재가 감지 되었습니다.");
                                     noticeManager.show(sensor + "번 센서", "화재 센서 작동");
                                     break;
-                                case SMOKE_TEMP :
+                                case SMOKE_TEMP:
                                     //noticeManager.show(sensor + "번 센서", "연기와 온도가 올라갔습니다.");
                                     noticeManager.show(sensor + "번 센서", "연기, 온도 센서 작동");
                                     break;
-                                case SMOKE :
+                                case SMOKE:
                                     //noticeManager.show(sensor + "번 센서", "연기가 납니다.");
                                     noticeManager.show(sensor + "번 센서", "연기 센서 작동");
                                     break;
-                                case TEMP :
+                                case TEMP:
                                     //noticeManager.show(sensor + "번 센서", "온도가 올라갔습니다.");
                                     noticeManager.show(sensor + "번 센서", "온도 센서 작동");
                                     break;
@@ -156,11 +154,12 @@ public class getSensorData extends AsyncTask<Void, Void, Void>{
                 }
 
             }
-        } catch(Exception e){
+        } catch (Exception e) {
             Log.e("Other Exception", e.getMessage());
         }
-        if(isSafe)
+        if (isSafe)
             DBConfig.isSafe = true;
+        Log.i("getSensorData", "Finish");
         return null;
     }
 
@@ -195,7 +194,6 @@ public class getSensorData extends AsyncTask<Void, Void, Void>{
             boolean reachable = (returnVal==0);
             return reachable;
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return false;
@@ -219,4 +217,5 @@ public class getSensorData extends AsyncTask<Void, Void, Void>{
         Notification notification = builder.build();
         notificationManager.notify(1, notification);
     }
+
 }

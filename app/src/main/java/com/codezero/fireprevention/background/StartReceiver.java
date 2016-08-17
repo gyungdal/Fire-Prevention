@@ -32,12 +32,12 @@ public class StartReceiver extends BroadcastReceiver {
         PendingIntent pendingIntent =
                 PendingIntent.getActivity(context, 8, mainIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         Notification.Builder builder = new Notification.Builder(context)
-                .setSmallIcon(android.R.drawable.stat_notify_sync)
-                .setTicker("Fire Prevention")
-                .setContentTitle("동기화 시작")
-                .setContentText("동기화를 시작 합니다.")
-                .setContentIntent(pendingIntent)
-                .setAutoCancel(true);
+            .setSmallIcon(android.R.drawable.stat_notify_sync)
+            .setTicker("Fire Prevention")
+            .setContentTitle("동기화 시작")
+            .setContentText("동기화를 시작 합니다.")
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true);
 
         Notification notification = builder.build();
         notificationManager.notify(0, notification);

@@ -20,6 +20,7 @@ public class ReceiveService extends Service {
     private static final long TIME = 2000;
     private getSensorData get;
     private int count, count2;
+    private Timer timer;
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
@@ -31,6 +32,7 @@ public class ReceiveService extends Service {
         Log.i(TAG, "Start Service");
         super.onStart(intent, startId);
         get = new getSensorData(getApplicationContext());
+
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
@@ -54,7 +56,7 @@ public class ReceiveService extends Service {
                 }
             }
         };
-        Timer timer = new Timer();
+        timer = new Timer();
         timer.schedule(task, TIME, TIME);
         while(true);
     }
@@ -62,6 +64,7 @@ public class ReceiveService extends Service {
     @Override
     public void onDestroy(){
         Log.wtf(TAG, "Service destroy!!!");
+        timer.cancel();
         Intent i = new Intent("com.codezero.fireprevention.background");
         i.setPackage(getPackageName());
         startService(i);

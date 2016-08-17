@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:2:1-132:12
+ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:2:1-136:12
 	xmlns:android
 		ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:2:11-69
 	package
@@ -55,7 +55,7 @@ ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidM
 	android:name
 		ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:15:22-63
 application
-ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:16:5-130:19
+ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:16:5-134:19
 MERGED from [com.android.support:appcompat-v7:23.2.1] D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.2.1\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-v4:23.2.1] D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:animated-vector-drawable:23.2.1] D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.2.1\AndroidManifest.xml:7:5-20
@@ -76,6 +76,9 @@ MERGED from [com.android.support:support-v4:23.2.1] D:\Company\Code Zero\Fire al
 MERGED from [com.journeyapps:zxing-android-embedded:3.0.0] D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.journeyapps\zxing-android-embedded\3.0.0\AndroidManifest.xml:47:5-55:19
 MERGED from [me.dm7.barcodescanner:zbar:1.8.4] D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\me.dm7.barcodescanner\zbar\1.8.4\AndroidManifest.xml:11:5-20
 MERGED from [me.dm7.barcodescanner:core:1.8.4] D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\me.dm7.barcodescanner\core\1.8.4\AndroidManifest.xml:11:5-20
+MERGED from [com.android.support:support-v4:23.2.1] D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-appindexing:8.1.0] D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\AndroidManifest.xml:19:5-20
+MERGED from [com.google.android.gms:play-services-basement:8.1.0] D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\AndroidManifest.xml:20:5-24:19
 MERGED from [com.android.support:support-v4:23.2.1] D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\AndroidManifest.xml:22:5-20
 	android:supportsRtl
 		ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:20:9-35
@@ -199,6 +202,13 @@ ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidM
 		ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:123:13-56
 	android:name
 		ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:121:13-57
+meta-data#com.google.android.gms.version
+ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:130:9-132:69
+MERGED from [com.google.android.gms:play-services-basement:8.1.0] D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\AndroidManifest.xml:21:9-23:69
+	android:name
+		ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:131:13-58
+	android:value
+		ADDED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml:132:13-66
 uses-sdk
 INJECTED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:23.2.1] D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.2.1\AndroidManifest.xml:21:5-23:78
@@ -222,6 +232,9 @@ MERGED from [com.android.support:support-v4:23.2.1] D:\Company\Code Zero\Fire al
 MERGED from [com.journeyapps:zxing-android-embedded:3.0.0] D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.journeyapps\zxing-android-embedded\3.0.0\AndroidManifest.xml:19:5-21:41
 MERGED from [me.dm7.barcodescanner:zbar:1.8.4] D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\me.dm7.barcodescanner\zbar\1.8.4\AndroidManifest.xml:7:5-9:41
 MERGED from [me.dm7.barcodescanner:core:1.8.4] D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\me.dm7.barcodescanner\core\1.8.4\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:support-v4:23.2.1] D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\AndroidManifest.xml:20:5-43
+MERGED from [com.google.android.gms:play-services-appindexing:8.1.0] D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-basement:8.1.0] D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\AndroidManifest.xml:18:5-42
 MERGED from [com.android.support:support-v4:23.2.1] D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\AndroidManifest.xml:20:5-43
 	android:targetSdkVersion
 		INJECTED from D:\Company\Code Zero\Fire alarm\fire-prevention\app\src\main\AndroidManifest.xml

@@ -2,8 +2,11 @@ package com.codezero.fireprevention.activity;
 
 import android.Manifest;
 import android.annotation.TargetApi;
+import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,25 +27,28 @@ import android.widget.TextView;
 import com.codezero.fireprevention.R;
 import com.codezero.fireprevention.community.network.getSensorData;
 import com.codezero.fireprevention.database.DBConfig;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener{
+        implements NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = "MainActivity";
     private ImageView imageView;
     private TextView textView, status;
 
-    private void getPermission(){
+    private void getPermission() {
         final String[] permissions = {
                 Manifest.permission.CAMERA,
                 Manifest.permission.SEND_SMS,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.ACCESS_FINE_LOCATION
         };
-        for(int i = 0;i<4;i++) {
+        for (int i = 0; i < 4; i++) {
             if (ContextCompat.checkSelfPermission(MainActivity.this,
                     permissions[i])
                     != PackageManager.PERMISSION_GRANTED) {
-            if (!ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
+                if (!ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
                         permissions[i]))
                     ActivityCompat.requestPermissions(MainActivity.this,
                             new String[]{permissions[i]},
@@ -61,8 +67,8 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         status = getStatusTextView();
-        imageView = (ImageView)findViewById(R.id.statusImage);
-        textView = (TextView)findViewById(R.id.statusText);
+        imageView = (ImageView) findViewById(R.id.statusImage);
+        textView = (TextView) findViewById(R.id.statusText);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -73,40 +79,36 @@ public class MainActivity extends AppCompatActivity
         new getSensorData(getApplicationContext()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         setStatus();
         getPermission();
-        //startReceiver();
-    }
-
-    private void startReceiver(){
-        Intent i = new Intent("com.codezero.fireprevention.background");
-        i.setPackage(getPackageName());
-        startService(i);
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
         setStatus();
+
     }
 
-    public TextView getStatusTextView(){
+
+    public TextView getStatusTextView() {
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        View header=navigationView.getHeaderView(0);
-        return (TextView)header.findViewById(R.id.status);
+        View header = navigationView.getHeaderView(0);
+        return (TextView) header.findViewById(R.id.status);
 
     }
-    private void setStatus(){
+
+    private void setStatus() {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, ManagerActivity.class));
             }
         });
-        if(DBConfig.isSafe){
+        if (DBConfig.isSafe) {
             imageView.setImageResource(R.drawable.safe);
             textView.setText(getText(R.string.safe));
             status.setText("상태 : " + "안전");
-        }else{
+        } else {
             imageView.setImageResource(R.drawable.unsafe);
             textView.setText(getText(R.string.unsafe));
             status.setText("상태 : " + (DBConfig.NotSafeNumber >= 2 ? "위험" : "주의"));
@@ -123,8 +125,8 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    public void click(View v){
-        switch(v.getId()) {
+    public void click(View v) {
+        switch (v.getId()) {
             case R.id.insert:
                 startActivity(new Intent(this, AddActivity.class));
                 Log.i(TAG, "등록");
@@ -173,6 +175,17 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
     }
 
 /*

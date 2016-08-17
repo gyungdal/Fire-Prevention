@@ -29,4 +29,5 @@ dependencies {
     compile 'me.dm7.barcodescanner:zbar:1.8.4'
     compile project(':libDaumMapAndroid')
     compile 'org.jsoup:jsoup:1.9.2'
+    compile 'com.google.android.gms:play-services-appindexing:8.1.0'
 }

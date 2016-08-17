@@ -30,10 +30,17 @@
         <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-23.2.1_caa04656cb36e773c430a40ce04f2c435303c952\classes.dex" />
     </item>
     <item
+        jar="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
+        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-basement-8.1.0_9a47704f5b9528a0f63bc752439de990b5c9cf32\classes.dex" />
+    </item>
+    <item
         jar="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         revision="23.0.2"
-        sha1="64aca22b136b8193ef3ba6dc3a55b3b4a098a821">
+        sha1="cc7fc748c7088ecdf3ff7a14727030ad96a8ba22">
         <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_163d379090dc5c5c0bc9aef4cbc10600aa944418\classes.dex" />
     </item>
     <item
@@ -49,6 +56,13 @@
         revision="23.0.2"
         sha1="535ee75e6cf4460071fdddd93eb1101e4281294f">
         <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\transforms\dex\debug\folders\1000\10\me.dm7.barcodescanner-zbar-1.8.4_cb5259ba18afa50ecca947f3c0b214ce37f9b10f\classes.dex" />
+    </item>
+    <item
+        jar="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
+        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-appindexing-8.1.0_6a54f8ad2efc984b6f3ae66b55e2fe1f10b617c3\classes.dex" />
     </item>
     <item
         jar="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.2.1\jars\classes.jar"
@@ -96,7 +110,7 @@
         jar="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         revision="23.0.2"
-        sha1="0b5b8df2109a21138b484098714634fcb5a7b1d2">
+        sha1="3cac4c7b67a06875fd84dc5e2aa6593cb671c836">
         <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_c4c64fc5307520bae80fe0a182a67344bbdb9791\classes.dex" />
     </item>
     <item

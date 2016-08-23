@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -25,6 +26,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.codezero.fireprevention.R;
+import com.codezero.fireprevention.background.StartReceiver;
 import com.codezero.fireprevention.community.network.getSensorData;
 import com.codezero.fireprevention.database.DBConfig;
 import com.google.android.gms.appindexing.Action;
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity
     private static final String TAG = "MainActivity";
     private ImageView imageView;
     private TextView textView, status;
-
+    private Intent service;
     private void getPermission() {
         final String[] permissions = {
                 Manifest.permission.CAMERA,
@@ -60,9 +62,25 @@ public class MainActivity extends AppCompatActivity
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        service = new Intent("com.codezero.fireprevention.background");
+        service.setPackage(getPackageName());
+        if(isServiceRunning("com.codezero.fireprevention.background")){
+            stopService(service);
+        }
+        //DBConfig.isBackground = false;
+        //serviceKill("com.codezero.fireprevention.background");
         super.onCreate(savedInstanceState);
         getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimary));
         setContentView(R.layout.activity_main);
+        /*if((getIntent().getFlags() & Intent.FLAG_ACTIVITY_NEW_TASK) == 0
+                && (getIntent().getFlags() & Intent.FLAG_ACTIVITY_MULTIPLE_TASK) == 0) {
+            Intent in = new Intent(MainActivity.this, MainActivity.class);
+            in.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+            in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(in);
+            MainActivity.this.finish();
+        }*/
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -79,13 +97,34 @@ public class MainActivity extends AppCompatActivity
         new getSensorData(getApplicationContext()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         setStatus();
         getPermission();
+
     }
+
+    private void serviceKill(String serviceName) {
+        ActivityManager activityManager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo runningServiceInfo : activityManager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceName.equals(runningServiceInfo.service.getClassName())) {
+                android.os.Process.killProcess(runningServiceInfo.pid);
+            }
+        }
+    }
+
 
     @Override
     public void onResume() {
         super.onResume();
         setStatus();
 
+    }
+
+    private Boolean isServiceRunning(String serviceName) {
+        ActivityManager activityManager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo runningServiceInfo : activityManager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceName.equals(runningServiceInfo.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
     }
 
 
@@ -185,6 +224,14 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onStop() {
+        new Thread(){
+            @Override
+            public void run(){
+                if(!isServiceRunning("com.codezero.fireprevention.background")){
+                    startService(service);
+                }
+            }
+        }.start();
         super.onStop();
     }
 

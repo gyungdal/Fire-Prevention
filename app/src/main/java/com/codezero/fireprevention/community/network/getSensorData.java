@@ -11,6 +11,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.codezero.fireprevention.activity.MainActivity;
+import com.codezero.fireprevention.activity.UnSafeActivity;
 import com.codezero.fireprevention.database.DBConfig;
 import com.codezero.fireprevention.database.DBHelper;
 import com.codezero.fireprevention.background.NoticeManager;
@@ -38,7 +39,7 @@ public class getSensorData extends AsyncTask<Void, Void, Void> {
     private static final int SMOKE = 2;
     private static final int TEMP = 1;
     private boolean isSafe;
-    private static Context context;
+    private Context context;
     private DBHelper database;
     private int getType;
     private static final long TIME = 1000;

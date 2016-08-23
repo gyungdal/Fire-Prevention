@@ -1,13 +1,17 @@
 package com.codezero.fireprevention.background;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.IBinder;
+import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.codezero.fireprevention.community.network.getSensorData;
+import com.codezero.fireprevention.database.DBConfig;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -36,7 +40,7 @@ public class ReceiveService extends Service {
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                System.gc();
+                 System.gc();
                 Log.i(TAG, get.getStatus().name());
                 if(get.getStatus() == AsyncTask.Status.FINISHED)
                     get = new getSensorData(getApplicationContext());
@@ -58,16 +62,12 @@ public class ReceiveService extends Service {
         };
         timer = new Timer();
         timer.schedule(task, TIME, TIME);
-        while(true);
     }
 
     @Override
     public void onDestroy(){
-        Log.wtf(TAG, "Service destroy!!!");
+        Log.i(TAG, "Service destroy!!!");
         timer.cancel();
-        Intent i = new Intent("com.codezero.fireprevention.background");
-        i.setPackage(getPackageName());
-        startService(i);
         super.onDestroy();
     }
 }

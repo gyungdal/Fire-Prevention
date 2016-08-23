@@ -2,6 +2,7 @@ package com.codezero.fireprevention.activity;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -53,51 +54,56 @@ public class UnSafeActivity extends AppCompatActivity implements
     private TextView textView;
     private DBHelper database;
     private SQLiteDatabase db;
-
+    private Intent service;
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimary));
-        setContentView(R.layout.activity_unsafe);
-        database = new DBHelper(UnSafeActivity.this, DBConfig.DB_NAME, null, 2);
-        toolbar = (Toolbar)findViewById(R.id.toolbar);
-        setToolbar();
-        Log.i(TAG, "Create activity unsafe");
-        unsafeButton = (Button)findViewById(R.id.unSafeButton);
-        textView = (TextView)findViewById(R.id.textView);
-        Intent intent = getIntent();
-        if(intent != null){
-            lat = intent.getDoubleExtra("lat", -1);
-            lng = intent.getDoubleExtra("lng", -1);
-            name = intent.getStringExtra("name");
-            if(lat == -1 || lng == -1){
-                Toast.makeText(getApplicationContext(), "Intent 실패", Toast.LENGTH_SHORT).show();
-                finish();
-            }
-        }
-        textView.setText(name + "센서에서" + getText(R.string.unsafe));
-        MapView mapView = new MapView(this);
-        mapView.setDaumMapApiKey(this.getString(R.string.DAUM_MAP_KEY));
-        mapView.zoomIn(true);
-        mapView.zoomOut(true);
-
-        ViewGroup mapViewContainer = (ViewGroup) findViewById(R.id.map);
-        mapViewContainer.addView(mapView);
-        mapView.setMapViewEventListener(this); //this에 MapView.MapViewEventListener 구현
-        mapView.setPOIItemEventListener(this);
-        mapView.setMapCenterPointAndZoomLevel(MapPoint.mapPointWithGeoCoord(lat, lng), 0, true);
-
-        MapPOIItem mSchool = new MapPOIItem();
-        mSchool.setItemName(name);
-        mSchool.setTag(0);
-        mSchool.setMapPoint(MapPoint.mapPointWithGeoCoord(lat, lng));
-        mSchool.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
-        mSchool.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
-        mapView.addPOIItem(mSchool);
-        unsafeButton.setOnClickListener(this);
-        getSensorAddress getAddress = new getSensorAddress(getApplicationContext());
         try {
+            service = new Intent("com.codezero.fireprevention.background");
+            service.setPackage(getPackageName());
+            if(isServiceRunning("com.codezero.fireprevention.background")){
+                stopService(service);
+            }
+            Log.i(TAG, "Create activity unsafe");
+            super.onCreate(savedInstanceState);
+            getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimary));
+            setContentView(R.layout.activity_unsafe);
+            database = new DBHelper(UnSafeActivity.this, DBConfig.DB_NAME, null, 2);
+            toolbar = (Toolbar)findViewById(R.id.toolbar);
+            setToolbar();
+            unsafeButton = (Button)findViewById(R.id.unSafeButton);
+            textView = (TextView)findViewById(R.id.textView);
+            Intent intent = getIntent();
+            if(intent != null){
+                lat = intent.getDoubleExtra("lat", -1);
+                lng = intent.getDoubleExtra("lng", -1);
+                name = intent.getStringExtra("name");
+                if(lat == -1 || lng == -1){
+                    Toast.makeText(getApplicationContext(), "Intent 실패", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            }
+            textView.setText(name + "센서에서" + getText(R.string.unsafe));
+            MapView mapView = new MapView(this);
+            mapView.setDaumMapApiKey(this.getString(R.string.DAUM_MAP_KEY));
+            mapView.zoomIn(true);
+            mapView.zoomOut(true);
+
+            ViewGroup mapViewContainer = (ViewGroup) findViewById(R.id.map);
+            mapViewContainer.addView(mapView);
+            mapView.setMapViewEventListener(this); //this에 MapView.MapViewEventListener 구현
+            mapView.setPOIItemEventListener(this);
+            mapView.setMapCenterPointAndZoomLevel(MapPoint.mapPointWithGeoCoord(lat, lng), 0, true);
+
+            MapPOIItem mSchool = new MapPOIItem();
+            mSchool.setItemName(name);
+            mSchool.setTag(0);
+            mSchool.setMapPoint(MapPoint.mapPointWithGeoCoord(lat, lng));
+            mSchool.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
+            mSchool.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+            mapView.addPOIItem(mSchool);
+            unsafeButton.setOnClickListener(this);
+            getSensorAddress getAddress = new getSensorAddress(getApplicationContext());
             address = getAddress.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, lat, lng).get();
         }catch(Exception e){
             Log.e(TAG, e.getMessage());
@@ -126,6 +132,29 @@ public class UnSafeActivity extends AppCompatActivity implements
         }
         db.close();
         return null;
+    }
+
+    private Boolean isServiceRunning(String serviceName) {
+        ActivityManager activityManager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo runningServiceInfo : activityManager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceName.equals(runningServiceInfo.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public void onStop() {
+        new Thread(){
+            @Override
+            public void run(){
+                if(!isServiceRunning("com.codezero.fireprevention.background")){
+                    startService(service);
+                }
+            }
+        }.start();
+        super.onStop();
     }
 
     @Override

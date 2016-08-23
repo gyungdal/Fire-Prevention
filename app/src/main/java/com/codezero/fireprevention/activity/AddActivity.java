@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -18,6 +19,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.codezero.fireprevention.R;
+import com.codezero.fireprevention.community.network.getSensorWithAddress;
 
 /**
  * Created by GyungDal on 2016-07-05.
@@ -31,6 +33,7 @@ public class AddActivity extends AppCompatActivity {
     private EditText esearch;
     private Button bscan;
     private Button bsearch;
+    private EditText searchName;
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -42,7 +45,8 @@ public class AddActivity extends AppCompatActivity {
         setToolbar();
         bscan = (Button)findViewById(R.id.QRCodeScan);
         esearch = (EditText)findViewById(R.id.SearchText);
-        bsearch = (Button)findViewById(R.id.search);
+        bsearch = (Button)findViewById(R.id.searchButton);
+        searchName = (EditText)findViewById(R.id.SearchName);
         bscan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,7 +56,9 @@ public class AddActivity extends AppCompatActivity {
         bsearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String str = esearch.getText().toString();
+                String key = esearch.getText().toString();
+                String name = searchName.getText().toString();
+                new getSensorWithAddress(getApplicationContext()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, key, name);
             }
         });
 

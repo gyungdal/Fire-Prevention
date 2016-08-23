@@ -75,7 +75,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="검색"
+            android:text="등록"
             android:id="@+id/searchButton"
             android:textSize="20dp"
             android:background="@drawable/blue_button"

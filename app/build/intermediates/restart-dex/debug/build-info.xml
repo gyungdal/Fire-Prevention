@@ -4,21 +4,21 @@
     api-level="23"
     density="xxxhdpi"
     format="7"
-    timestamp="3624140607599"
+    timestamp="1297273372914"
     token="-3200237568786853658" >
 
     <task
         name="javac"
-        duration="688" />
+        duration="2240" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="108" />
+        duration="1156" />
     <task
         name="verifier"
-        duration="17" />
+        duration="215" />
 
     <artifact
         location="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\outputs\apk\app-debug.apk"

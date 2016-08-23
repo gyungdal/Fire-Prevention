@@ -37,8 +37,7 @@ public class getSensorWithAddress extends AsyncTask<String, Void, Boolean> {
     protected Boolean doInBackground(String... params) {
         try{
             if(isAlready(Integer.valueOf(params[0]))){
-                Toast.makeText(context, params[0] + " 번 센서는 이미 등록되어 있습니다.",Toast.LENGTH_SHORT).show();
-                return false;
+               return false;
             }
             Document doc = Jsoup.connect(front + params[0]).get();
             if(doc.select(".latitude").get(0).text().equals("") ||
@@ -47,7 +46,6 @@ public class getSensorWithAddress extends AsyncTask<String, Void, Boolean> {
             insert(Integer.valueOf(params[0]),params[1]
                     ,Double.valueOf(doc.select(".longitude").get(0).text())
                     ,Double.valueOf(doc.select(".latitude").get(0).text()));
-            Toast.makeText(context, "센서 " + params[1] + " 가 등록이 완료되었습니다.",Toast.LENGTH_SHORT).show();
             return true;
         }catch (Exception e){
             Log.e(TAG, e.getMessage());

@@ -21,6 +21,8 @@ import android.widget.Toast;
 import com.codezero.fireprevention.R;
 import com.codezero.fireprevention.community.network.getSensorWithAddress;
 
+import java.util.concurrent.ExecutionException;
+
 /**
  * Created by GyungDal on 2016-07-05.
  */
@@ -58,10 +60,27 @@ public class AddActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String key = esearch.getText().toString();
                 String name = searchName.getText().toString();
-                new getSensorWithAddress(getApplicationContext()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, key, name);
-            }
-        });
+                if(key.equals("") || key.trim().equals(""))
+                    Toast.makeText(getApplicationContext(), "제품 번호를 입력해주세요", Toast.LENGTH_SHORT).show();
+                else if(name.equals("") || name.trim().equals(""))
+                    Toast.makeText(getApplicationContext(), "제품 이름을 입력해주세요", Toast.LENGTH_SHORT).show();
+                else{
+                    try {
+                        if(new getSensorWithAddress(getApplicationContext())
+                                .executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, key, name).get())
+                            Toast.makeText(getApplicationContext(),
+                                    name + " 이(가) 등록이 완료되었습니다.",Toast.LENGTH_SHORT).show();
+                        else
 
+                            Toast.makeText(getApplicationContext(),
+                                    name + " 이(가) 등록에 실패했습니다.",Toast.LENGTH_SHORT).show();
+                    } catch (InterruptedException e) {
+                        Log.e(TAG, e.getMessage());
+                    } catch (ExecutionException e) {
+                        Log.e(TAG, e.getMessage());
+                    }
+                }
+        }});
     }
 
     private void setToolbar(){

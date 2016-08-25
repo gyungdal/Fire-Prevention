@@ -27,21 +27,19 @@ import java.util.List;
  */
 public class getSensorData extends AsyncTask<Void, Void, Void> {
     private static final String SERVER_URL = "http://59.26.68.181:8080/getSensorInfo.jsp?key=";
-    private static final int GET_ALL_DATA = 0;
-    private static final int GET_ARDUINO_DATA = 1;
-    private static final int GET_ANDROID_DATA = 2;
-    private static final int GET_NULL = 3;
+    private static final int NORMAL = 0;
     private static final int FIRE_SMOKE_TEMP = 7;
     private static final int FIRE_SMOKE = 6;
     private static final int FIRE_TEMP = 5;
-    private static final int FIRE = 4;
-    private static final int SMOKE_TEMP = 3;
+    private static final int FIRE = 3;
+    private static final int SMOKE_TEMP = 4;
     private static final int SMOKE = 2;
     private static final int TEMP = 1;
+    private static final int NEAR = 10;
     private boolean isSafe;
     private Context context;
     private DBHelper database;
-    private int getType;
+    private boolean isNear;
     private static final long TIME = 1000;
     public getSensorData(Context context){
         this.context = context;
@@ -52,6 +50,7 @@ public class getSensorData extends AsyncTask<Void, Void, Void> {
     protected Void doInBackground(Void... params) {
         isSafe = DBConfig.isSafe = true;
         DBConfig.NotSafeNumber = 0;
+        isNear = false;
         Log.i("Get Sensor Data Start", "YEAH");
         try {
             //온라인이 아닐경우 그냥 대기
@@ -61,99 +60,76 @@ public class getSensorData extends AsyncTask<Void, Void, Void> {
 
             List<Integer> sensors = getAllProductKey();
             for (int sensor : sensors) {
-                getType = GET_ALL_DATA;
                 Document doc = Jsoup.connect(SERVER_URL + sensor)
                         .get();
 
                 //getData
                 String lat = doc.select(".latitude").get(0).text();
                 String lng = doc.select(".longitude").get(0).text();
-                String smoke = doc.select(".smoke").get(0).text();
-                String temp = doc.select(".temp").get(0).text();
-                String fire = doc.select(".fire").get(0).text();
+                String state = doc.select(".state").get(0).text();
                 String time = doc.select(".time").get(0).text();
 
                 //Debug
                 Log.i(sensor + " Data", "lat : " + lat);
                 Log.i(sensor + " Data", "lng : " + lng);
-                Log.i(sensor + " Data", "smoke : " + smoke);
-                Log.i(sensor + " Data", "temp : " + temp);
-                Log.i(sensor + " Data", "fire : " + fire);
+                Log.i(sensor + " Data", "state : " + state);
                 Log.i(sensor + " Data", "time : " + time);
-
-                if (lng.equals("null") || lat.equals("null")) {
-                    Log.i(sensor + " Info", "Not init sensor from android");
-                    getType = GET_ARDUINO_DATA;
+                int result = Integer.valueOf(state);
+                if(result > NEAR) {
+                    isNear = true;
+                    result = result - NEAR;
                 }
-
-                if (smoke.equals("null") || temp.equals("null") || fire.equals("null")) {
-                    Log.i(sensor + " Info", "Not init sensor from arduino");
-                    getType = (getType == GET_ARDUINO_DATA) ? GET_NULL : GET_ANDROID_DATA;
+                DBConfig.NotSafeNumber++;
+                isSafe = DBConfig.isSafe = false;
+                NoticeManager noticeManager =
+                        new NoticeManager(context, getName(sensor)
+                                , Double.valueOf(lat), Double.valueOf(lng));
+                switch (result) {
+                    case FIRE_SMOKE_TEMP:
+                        noticeManager.show(sensor + "번 센서", (isNear ? "주변에 불이나고" : "") +
+                                "불꽃, 연기, 온도 센서 작동");
+                        break;
+                    case FIRE_SMOKE:
+                        //noticeManager.show(sensor + "번 센서", "연기가 나고 화재가 감지 되었습니다.");
+                        noticeManager.show(sensor + "번 센서", (isNear ? "주변에 불이나고" : "") +
+                                "불꽃, 연기 센서 작동");
+                        break;
+                    case FIRE_TEMP:
+                        //noticeManager.show(sensor + "번 센서", "온도가 올라가고 화재가 감지 되었습니다.");
+                        noticeManager.show(sensor + "번 센서", (isNear ? "주변에 불이나고" : "") +
+                                "불꽃, 온도 센서 작동");
+                        break;
+                    case FIRE:
+                        //noticeManager.show(sensor + "번 센서", "화재가 감지 되었습니다.");
+                        noticeManager.show(sensor + "번 센서",(isNear ? "주변에 불이나고" : "") +
+                                "불꽃 센서 작동");
+                        break;
+                    case SMOKE_TEMP:
+                        //noticeManager.show(sensor + "번 센서", "연기와 온도가 올라갔습니다.");
+                        noticeManager.show(sensor + "번 센서",(isNear ? "주변에 불이나고" : "") +
+                                "연기, 온도 센서 작동");
+                        break;
+                    case SMOKE:
+                        //noticeManager.show(sensor + "번 센서", "연기가 납니다.");
+                        noticeManager.show(sensor + "번 센서", (isNear ? "주변에 불이나고" : "") +
+                                "연기 센서 작동");
+                        break;
+                    case TEMP:
+                        //noticeManager.show(sensor + "번 센서", "온도가 올라갔습니다.");
+                        noticeManager.show(sensor + "번 센서", (isNear ? "주변에 불이나고" : "") +
+                                "온도 센서 작동");
+                        break;
+                    case NORMAL :
+                        if(isNear)
+                            noticeManager.show(sensor + "번 센서", "주변에 불이났습니다.");
+                        break;
+                    default:
+                        noticeManager.show(sensor + "번 센서",(isNear ? "주변에 불이나고" : "") +
+                                "센서 오류");
+                        Log.i("" + sensor, "" + result);
+                        break;
                 }
-
-                switch (getType) {
-                    case GET_ANDROID_DATA:
-                        alert(sensor + "번 센서", "안드로이드측 값 설정 필요!!!");
-
-                        break;
-
-                    case GET_ARDUINO_DATA:
-                        alert(sensor + "번 센서", "아두이노측 업로드 데이터가 존재하지 않습니다");
-                        break;
-
-                    case GET_NULL:
-                        alert(sensor + "번 센서", "아무런 설정이 되어있지 않은 센서");
-                        break;
-                    default: {
-                        int result = BoolToByte((Double.valueOf(fire) > 75)) << 2;
-                        result += BoolToByte((Double.valueOf(smoke) > 1)) << 1;
-                        result += BoolToByte((Double.valueOf(temp) > 60));
-                        if (result != 0) {
-                            DBConfig.NotSafeNumber++;
-                            isSafe = DBConfig.isSafe = false;
-                            NoticeManager noticeManager =
-                                    new NoticeManager(context, getName(sensor)
-                                            , Double.valueOf(lat), Double.valueOf(lng));
-                            switch (result) {
-                                case FIRE_SMOKE_TEMP:
-                                    //noticeManager.show(sensor + "번 센서", "화재가 의심 됩니다.");
-                                    noticeManager.show(sensor + "번 센서", "불꽃, 연기, 온도 센서 작동");
-                                    break;
-                                case FIRE_SMOKE:
-                                    //noticeManager.show(sensor + "번 센서", "연기가 나고 화재가 감지 되었습니다.");
-                                    noticeManager.show(sensor + "번 센서", "불꽃, 연기 센서 작동");
-                                    break;
-                                case FIRE_TEMP:
-                                    //noticeManager.show(sensor + "번 센서", "온도가 올라가고 화재가 감지 되었습니다.");
-                                    noticeManager.show(sensor + "번 센서", "불꽃, 온도 센서 작동");
-                                    break;
-                                case FIRE:
-                                    //noticeManager.show(sensor + "번 센서", "화재가 감지 되었습니다.");
-                                    noticeManager.show(sensor + "번 센서", "불꽃 센서 작동");
-                                    break;
-                                case SMOKE_TEMP:
-                                    //noticeManager.show(sensor + "번 센서", "연기와 온도가 올라갔습니다.");
-                                    noticeManager.show(sensor + "번 센서", "연기, 온도 센서 작동");
-                                    break;
-                                case SMOKE:
-                                    //noticeManager.show(sensor + "번 센서", "연기가 납니다.");
-                                    noticeManager.show(sensor + "번 센서", "연기 센서 작동");
-                                    break;
-                                case TEMP:
-                                    //noticeManager.show(sensor + "번 센서", "온도가 올라갔습니다.");
-                                    noticeManager.show(sensor + "번 센서", "온도 센서 작동");
-                                    break;
-                                default:
-                                    noticeManager.show(sensor + "번 센서", "설정되지 않은 값");
-                                    Log.i("" + sensor, "" + result);
-                                    break;
-                            }
-                        }
-                        Log.i(sensor + "번 센서", "FINE");
-                        break;
-                    }
-                }
-
+                Log.i(sensor + "번 센서", "FINE");
             }
         } catch (Exception e) {
             Log.e("Other Exception", e.getMessage());

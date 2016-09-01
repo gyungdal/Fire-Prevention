@@ -1,11 +1,8 @@
 <resources>
     <string name="app_name">Fire Prevention</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">설정</string>
-
-
     <string name="title">화재 감지 알림 서비스</string>
     <string name="login">로그인</string>
     <string name="autologin">자동 로그인</string>

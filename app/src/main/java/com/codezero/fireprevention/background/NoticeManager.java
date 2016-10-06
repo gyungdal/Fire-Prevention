@@ -34,6 +34,7 @@ public class NoticeManager {
             mainIntent.putExtra("name", name);
             mainIntent.putExtra("lat", lat);
             mainIntent.putExtra("lng", lng);
+            mainIntent.putExtra("extra", text);
             mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             PendingIntent pendingIntent =
                     PendingIntent.getActivity(context, (i - (int) lat), mainIntent,

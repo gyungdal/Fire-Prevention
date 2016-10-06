@@ -2,123 +2,157 @@
 <items version="2" >
 
     <item
-        jar="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="673d77a5bbddd766037f088e775df525c46407f0">
-        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-23.2.1_01c3cad42d0b779555a4e1c18c1a15ffec8f6fef.jar" />
-    </item>
-    <item
-        jar="M:\Tool\Develop\Android\Gradle\caches\modules-2\files-2.1\com.google.zxing\core\3.2.0\e019d15a13a9786f881141d2df6654b8510bce8b\core-3.2.0.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="e019d15a13a9786f881141d2df6654b8510bce8b">
-        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\core-3.2.0_76a0c410d81b5b651271d6c8c7946084a0be1364.jar" />
-    </item>
-    <item
-        jar="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\me.dm7.barcodescanner\zbar\1.8.4\jars\libs\zbar.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="6b963fd8297b9b963fbb0afb0b18a11ed9044f78">
-        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\zbar_1f07b2e94aaf34867ce895eb5146f751f7aa4016.jar" />
-    </item>
-    <item
-        jar="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.android.support\design\23.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="72961d8b453b46e277702f18de9d210bc019e36e">
-        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\com.android.support-design-23.2.1_caa04656cb36e773c430a40ce04f2c435303c952.jar" />
-    </item>
-    <item
-        jar="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
-        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-basement-8.1.0_9a47704f5b9528a0f63bc752439de990b5c9cf32.jar" />
-    </item>
-    <item
-        jar="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="3be474b1b21b31cf2fa93fe6bd641ae108d96452">
-        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.2.1_dfbad0dea1d7515320a80446c2405cb1248472dc.jar" />
-    </item>
-    <item
-        jar="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\me.dm7.barcodescanner\zbar\1.8.4\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="535ee75e6cf4460071fdddd93eb1101e4281294f">
-        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\me.dm7.barcodescanner-zbar-1.8.4_cb5259ba18afa50ecca947f3c0b214ce37f9b10f.jar" />
-    </item>
-    <item
-        jar="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="3469cb457f10f74c28cbc05f069b6c894f6cbdd0">
-        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-23.2.1_2392cf64eab336d53270876d2a72ccc2ff994e6d.jar" />
-    </item>
-    <item
-        jar="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
-        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-appindexing-8.1.0_6a54f8ad2efc984b6f3ae66b55e2fe1f10b617c3.jar" />
-    </item>
-    <item
-        jar="D:\Company\Code Zero\Fire alarm\fire-prevention\libDaumMapAndroid\libDaumMapAndroid.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="a2ca14c67023cf9dfb7f79261593e4c014675ac6">
-        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\libDaumMapAndroid_5f1b9e88956e9e445411d45ef798ff5a9a02c84b.jar" />
-    </item>
-    <item
-        jar="M:\Tool\Develop\Android\Gradle\caches\modules-2\files-2.1\org.jsoup\jsoup\1.9.2\5e3bda828a80c7a21dfbe2308d1755759c2fd7b4\jsoup-1.9.2.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="5e3bda828a80c7a21dfbe2308d1755759c2fd7b4">
-        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\jsoup-1.9.2_e0221e53e35ca2f9f78b8f515957e588af6710bc.jar" />
-    </item>
-    <item
-        jar="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="e3885783ff8926ed9e2fdcd16816c2e1e73e7aee">
-        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-23.2.1_3c1098815ee74ca40a4cd4be8589b52c70736616.jar" />
-    </item>
-    <item
-        jar="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="e4d0cbb0b999604b349062f0214a0a228a7fd151">
-        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.2.1_b3d6f4511c14b8bf0f626526f8c8de73c6014246.jar" />
-    </item>
-    <item
-        jar="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.journeyapps\zxing-android-embedded\3.0.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="a0d7b062303473e1825efcb59ab0e3fbfbb64247">
-        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\com.journeyapps-zxing-android-embedded-3.0.0_342dfeeede0be85715804ffa33d7c8abc22225f6.jar" />
-    </item>
-    <item
-        jar="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\me.dm7.barcodescanner\core\1.8.4\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="af8d42f1f020e936b8cd9f5cb6c75993194895a3">
-        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\me.dm7.barcodescanner-core-1.8.4_5190024a8628e5955900486080d500fa9dad05c8.jar" />
-    </item>
-    <item
+        is-multidex="false"
         jar="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\jars\libs\internal_impl-23.2.1.jar"
         jumboMode="false"
+        optimize="true"
         revision="23.0.2"
         sha1="607a3d0b8013b4ccbfeb0b7cb293351994e021fb">
         <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\internal_impl-23.2.1_d00d19e689a79a6ccb854bdc6ba89896fed3a449.jar" />
     </item>
     <item
+        is-multidex="false"
+        jar="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="e3885783ff8926ed9e2fdcd16816c2e1e73e7aee">
+        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-23.2.1_3c1098815ee74ca40a4cd4be8589b52c70736616.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="3be474b1b21b31cf2fa93fe6bd641ae108d96452">
+        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.2.1_dfbad0dea1d7515320a80446c2405cb1248472dc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\me.dm7.barcodescanner\core\1.8.4\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="af8d42f1f020e936b8cd9f5cb6c75993194895a3">
+        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\me.dm7.barcodescanner-core-1.8.4_5190024a8628e5955900486080d500fa9dad05c8.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="M:\Tool\Develop\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.2.1\support-annotations-23.2.1.jar"
         jumboMode="false"
+        optimize="true"
         revision="23.0.2"
         sha1="ccb693bc0774fcb637246f7360de25b4af7df318">
         <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\support-annotations-23.2.1_3ec8581be6e56c6ebc8949df366807663704475b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="e4d0cbb0b999604b349062f0214a0a228a7fd151">
+        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.2.1_b3d6f4511c14b8bf0f626526f8c8de73c6014246.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="M:\Tool\Develop\Android\Gradle\caches\modules-2\files-2.1\com.google.zxing\core\3.2.0\e019d15a13a9786f881141d2df6654b8510bce8b\core-3.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="e019d15a13a9786f881141d2df6654b8510bce8b">
+        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\core-3.2.0_76a0c410d81b5b651271d6c8c7946084a0be1364.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\me.dm7.barcodescanner\zbar\1.8.4\jars\libs\zbar.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="6b963fd8297b9b963fbb0afb0b18a11ed9044f78">
+        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\zbar_1f07b2e94aaf34867ce895eb5146f751f7aa4016.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="M:\Tool\Develop\Android\Gradle\caches\modules-2\files-2.1\org.jsoup\jsoup\1.9.2\5e3bda828a80c7a21dfbe2308d1755759c2fd7b4\jsoup-1.9.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="5e3bda828a80c7a21dfbe2308d1755759c2fd7b4">
+        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\jsoup-1.9.2_e0221e53e35ca2f9f78b8f515957e588af6710bc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.journeyapps\zxing-android-embedded\3.0.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="a0d7b062303473e1825efcb59ab0e3fbfbb64247">
+        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\com.journeyapps-zxing-android-embedded-3.0.0_342dfeeede0be85715804ffa33d7c8abc22225f6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.android.support\design\23.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="72961d8b453b46e277702f18de9d210bc019e36e">
+        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\com.android.support-design-23.2.1_caa04656cb36e773c430a40ce04f2c435303c952.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\me.dm7.barcodescanner\zbar\1.8.4\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="535ee75e6cf4460071fdddd93eb1101e4281294f">
+        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\me.dm7.barcodescanner-zbar-1.8.4_cb5259ba18afa50ecca947f3c0b214ce37f9b10f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="673d77a5bbddd766037f088e775df525c46407f0">
+        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-23.2.1_01c3cad42d0b779555a4e1c18c1a15ffec8f6fef.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
+        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-basement-8.1.0_9a47704f5b9528a0f63bc752439de990b5c9cf32.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Company\Code Zero\Fire alarm\fire-prevention\libDaumMapAndroid\libDaumMapAndroid.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="a2ca14c67023cf9dfb7f79261593e4c014675ac6">
+        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\libDaumMapAndroid_5f1b9e88956e9e445411d45ef798ff5a9a02c84b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
+        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-appindexing-8.1.0_6a54f8ad2efc984b6f3ae66b55e2fe1f10b617c3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="3469cb457f10f74c28cbc05f069b6c894f6cbdd0">
+        <dex dex="D:\Company\Code Zero\Fire alarm\fire-prevention\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-23.2.1_2392cf64eab336d53270876d2a72ccc2ff994e6d.jar" />
     </item>
 
 </items>

@@ -51,7 +51,7 @@ public class UnSafeActivity extends AppCompatActivity implements
     private String address, name;
     private Toolbar toolbar;
     private Button unsafeButton;
-    private TextView textView;
+    private TextView textView, extraText;
     private DBHelper database;
     private SQLiteDatabase db;
     private Intent service;
@@ -73,17 +73,19 @@ public class UnSafeActivity extends AppCompatActivity implements
             setToolbar();
             unsafeButton = (Button)findViewById(R.id.unSafeButton);
             textView = (TextView)findViewById(R.id.textView);
+            extraText = (TextView) findViewById(R.id.extra_map_text);
             Intent intent = getIntent();
             if(intent != null){
                 lat = intent.getDoubleExtra("lat", -1);
                 lng = intent.getDoubleExtra("lng", -1);
                 name = intent.getStringExtra("name");
+                extraText.setText(intent.getStringExtra("extra"));
                 if(lat == -1 || lng == -1){
                     Toast.makeText(getApplicationContext(), "Intent 실패", Toast.LENGTH_SHORT).show();
                     finish();
                 }
             }
-            textView.setText(name + "센서에서" + getText(R.string.unsafe));
+            textView.setText(name + "에서" + getText(R.string.unsafe));
             MapView mapView = new MapView(this);
             mapView.setDaumMapApiKey(this.getString(R.string.DAUM_MAP_KEY));
             mapView.zoomIn(true);
